@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes produits cheveux premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        /* --- STYLE GÉNÉRAL ET COULEURS PREMIUM --- */
+        :root {
+            --color-white: #ffffff;
+            --color-background: #fcfbf8; /* Beige très clair / Crème */
+            --color-text-dark: #2c2c2c;
+            --color-gold: #c6a77d; /* Doré doux */
+            --color-gold-hover: #a3825c;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --max-width: 800px;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .container {
+            width: 90%;
+            max-width: var(--max-width);
+            padding: 20px 0;
+        }
+
+        /* --- HEADER & TITRE --- */
+        .header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+        }
+
+        .header h1 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 2.5em; /* Grande taille sur desktop */
+            margin: 0;
+        }
+
+        /* --- LISTE DE PRODUITS --- */
+        .product-list {
+            display: grid;
+            grid-template-columns: 1fr; /* Une seule colonne par défaut (mobile) */
+            gap: 40px; /* Espace entre les produits */
+            padding: 20px 0;
+        }
+
+        @media (min-width: 600px) {
+            .product-list {
+                grid-template-columns: repeat(2, 1fr); /* Deux colonnes sur desktop */
+                gap: 30px;
+            }
+        }
+
+        .product-card {
+            background: var(--color-white);
+            border: 1px solid #e7e7e7;
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            padding-bottom: 20px;
+            transition: box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Effet léger 'premium' au survol */
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px; /* Taille fixe pour l'homogénéité */
+            object-fit: cover;
+            border-bottom: 1px solid #eee;
+        }
+
+        .product-content {
+            padding: 15px;
+            text-align: left;
+        }
+
+        .product-content h2 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.3em;
+            color: var(--color-text-dark);
+            margin: 0 0 5px 0;
+        }
+
+        .product-content p {
+            font-size: 0.9em;
+            color: #6a6a6a;
+            margin: 0 0 10px 0;
+        }
+
+        .product-price {
+            font-weight: 700;
+            color: var(--color-gold);
+            font-size: 1.1em;
+            display: block;
+            margin-bottom: 15px;
+        }
+
+        /* --- BOUTON D'AFFILIATION --- */
+        .amazon-button {
+            display: block;
+            width: 90%;
+            margin: 0 auto;
+            padding: 12px 20px;
+            background-color: var(--color-gold);
+            color: var(--color-white);
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9em;
+            transition: background-color 0.3s ease;
+        }
+
+        .amazon-button:hover {
+            background-color: var(--color-gold-hover);
+        }
+
+        /* --- FOOTER --- */
+        .footer {
+            width: 100%;
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.8em;
+            color: #888;
+            border-top: 1px solid #e7e7e7;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        
+        <header class="header">
+            <h1>Mes produits cheveux premium ✨</h1>
+        </header>
+
+        <section class="product-list">
+            
+            <div class="product-card">
+                <img src="URL_IMAGE_PRODUIT_1" alt="Dyson Airwrap Multistyler" class="product-image">
+                <div class="product-content">
+                    <h2>Dyson Airwrap Multistyler</h2>
+                    <p>Le styler tout-en-un révolutionnaire pour boucler, onduler et lisser sans chaleur extrême. L'outil préféré des professionnels.</p>
+                    <span class="product-price">499,00 €</span>
+                    <a href="#" target="_blank" class="amazon-button">Voir sur Amazon</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="URL_IMAGE_PRODUIT_2" alt="Dyson Supersonic" class="product-image">
+                <div class="product-content">
+                    <h2>Dyson Supersonic</h2>
+                    <p>Sèche-cheveux intelligent et rapide. Conçu pour différents types de cheveux, il protège la brillance naturelle.</p>
+                    <span class="product-price">429,00 €</span>
+                    <a href="#" target="_blank" class="amazon-button">Voir sur Amazon</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="URL_IMAGE_PRODUIT_3" alt="Huile Capillaire de Luxe" class="product-image">
+                <div class="product-content">
+                    <h2>Huile Capillaire Précieuse</h2>
+                    <p>Huile riche en kératine et en argan. Idéale pour nourrir les pointes et apporter une brillance miroir instantanée.</p>
+                    <span class="product-price">35,50 €</span>
+                    <a href="#" target="_blank" class="amazon-button">Voir sur Amazon</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="URL_IMAGE_PRODUIT_4" alt="Shampoing Sans Sulfates" class="product-image">
+                <div class="product-content">
+                    <h2>Shampoing Volume Pro</h2>
+                    <p>Formule sans sulfates, enrichie en vitamines B5 pour un volume durable sans alourdir. Odeur subtile et raffinée.</p>
+                    <span class="product-price">28,00 €</span>
+                    <a href="#" target="_blank" class="amazon-button">Voir sur Amazon</a>
+                </div>
+            </div>
+
+            </section>
+
+    </div>
+
+    <footer class="footer">
+        Tous les produits via Amazon Affiliates. Je perçois une commission sur les achats sans coût additionnel pour vous. &copy; 2025
+    </footer>
+
+</body>
+</html>
