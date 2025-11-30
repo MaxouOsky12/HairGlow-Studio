@@ -16,11 +16,10 @@
             --color-border: #e0e0e0;
             --color-star: #DE7921;
             --color-accent-gold: #c6a87c;
-            --font-serif: 'Playfair Display', serif;
-            --font-sans: 'Inter', sans-serif;
             /* Nouveaux badges */
-            --color-badge-power: #1e8449; /* Vert pour la puissance */
-            --color-badge-exclusive: #007185; /* Bleu pour l'exclusivité */
+            --color-badge-power: #1e8449;
+            --color-badge-exclusive: #007185;
+            --color-badge-new: #FFA700; /* Orange pour Nouveauté/Deal */
         }
 
         body {
@@ -117,20 +116,9 @@
             font-weight: 700;
             text-transform: uppercase;
         }
-
-        .badge-premium {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: var(--color-text);
-            color: white;
-            padding: 8px 15px;
-            font-size: 0.8em;
-            font-weight: 700;
-        }
-
+        
         /* Badges de Différenciation */
-        .badge-exclusive { /* Utilisé pour le 1er produit */
+        .badge-exclusive {
             position: absolute;
             top: 0;
             right: 0;
@@ -142,12 +130,24 @@
             text-transform: uppercase;
         }
 
-        .badge-power { /* Utilisé pour le 2ème produit */
+        .badge-power {
             position: absolute;
             top: 0;
             right: 0;
             background-color: var(--color-badge-power);
             color: white;
+            padding: 8px 15px;
+            font-size: 0.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-new {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--color-badge-new);
+            color: var(--color-text);
             padding: 8px 15px;
             font-size: 0.8em;
             font-weight: 700;
@@ -304,9 +304,7 @@
 
             <div class="product-card">
                 <span class="badge-power">1600W MAX</span>
-                <span class="badge-premium">Modèle PRO</span>
-
-                <div class="product-image-wrapper">
+                <span class="badge-exclusive" style="right: auto; left: 0;">MODÈLE PRO</span> <div class="product-image-wrapper">
                     <img src="https://m.media-amazon.com/images/I/61XvcXMdy9L._AC_SL1500_.jpg" alt="Dyson Supersonic" class="product-image">
                 </div>
                 
@@ -342,40 +340,41 @@
             </div>
 
             <div class="product-card">
-                <span class="badge-premium">Indispensable</span>
+                <span class="badge-sale">-30%</span>
+                <span class="badge-new">NOUVEAUTÉ & TOP AVIS</span>
                 
                 <div class="product-image-wrapper">
-                    <img src="https://example.com/votre-image-huile.jpg" alt="Huile Kérastase" class="product-image">
+                    <img src="https://m.media-amazon.com/images/I/51HZ124ECML._AC_SL1500_.jpg" alt="Dyson Airstrait Lisseur" class="product-image">
                 </div>
                 
                 <div class="product-content">
-                    <h2 class="product-title">Kérastase Elixir Ultime : Huile Capillaire (Soin)</h2>
+                    <h2 class="product-title">Dyson Airstrait™ : Lisseur et Sécheur 2-en-1</h2>
                     
                     <div class="rating-block">
                         <span class="stars">
-                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
                         </span>
-                        <span>5,0</span>
-                        <span class="rating-count">(9 000+ avis)</span>
+                        <span>4,4</span>
+                        <span class="rating-count">(779 avis)</span>
                     </div>
 
                     <div class="sales-proof">
-                        <i class="fa-solid fa-box" style="color:#50C878;"></i> Produit de Soin N°1 en Europe
+                        <i class="fa-solid fa-check-double" style="color:#007185;"></i> **Plus de 200 achetés ce mois-ci !**
                     </div>
 
                     <ul class="features-list">
-                        <li><i class="fa-solid fa-check"></i> Brillance intense et protection anti-humidité</li>
-                        <li><i class="fa-solid fa-check"></i> Protection contre la chaleur (**230°C**)</li>
-                        <li><i class="fa-solid fa-check"></i> Huiles précieuses : Marula, Camélia, Argan</li>
+                        <li><i class="fa-solid fa-check"></i> **Lissage du mouillé au sec** (sans plaques chauffantes)</li>
+                        <li><i class="fa-solid fa-check"></i> Pas de dommage dû à la chaleur extrême (selon Dyson)</li>
+                        <li><i class="fa-solid fa-check"></i> Technologie avancée pour un contrôle précis</li>
                     </ul>
 
                     <div class="price-container">
-                        <span class="price-current">35,50 €</span>
-                        <span class="price-old">45,00 €</span>
+                        <span class="price-current">349,00 €</span>
+                        <span class="price-old">499,00 €</span>
                     </div>
                     
-                    <a href="VOTRE_LIEN_AFFILIE_KERASTASE" class="btn-amazon" target="_blank">
-                        Acheter l'Huile <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i>
+                    <a href="VOTRE_LIEN_AFFILIE_AIRSTRAIT" class="btn-amazon" target="_blank">
+                        Voir l'offre Lisseur <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i>
                     </a>
                 </div>
             </div>
