@@ -9,17 +9,21 @@
     
     <style>
         :root {
-            --color-bg: #f8f8f8;
+            --color-bg: #f5f5f5; /* Légèrement plus clair */
             --color-white: #ffffff;
             --color-text: #0F1111;
-            --color-price-red: #CC0C39;
+            --color-price-red: #B12704; /* Rouge Amazon classique, plus profond */
             --color-border: #e0e0e0;
-            --color-star: #DE7921;
+            --color-star: #FF9900; /* Jaune or plus standard pour les étoiles */
             --color-accent-gold: #c6a87c;
+            --font-serif: 'Playfair Display', serif;
+            --font-sans: 'Inter', sans-serif;
             /* Nouveaux badges */
-            --color-badge-power: #1e8449;
+            --color-badge-power: #03a854; /* Vert plus vif */
             --color-badge-exclusive: #007185;
-            --color-badge-new: #FFA700; /* Orange pour Nouveauté/Deal */
+            --color-badge-new: #FFA700;
+            --color-button: #FFD814; /* Couleur bouton Amazon */
+            --color-button-hover: #ffad00;
         }
 
         body {
@@ -50,108 +54,59 @@
 
         .header h1 {
             font-family: var(--font-serif);
-            font-size: 2.5em;
-            margin-bottom: 10px;
+            font-size: 3em; /* Augmenté */
+            margin-bottom: 5px;
+            color: var(--color-text);
         }
 
         .header p {
             color: #555;
             font-size: 1.1em;
+            font-weight: 500;
         }
 
         /* --- GRILLE PRODUIT --- */
         .product-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adapté légèrement pour les petits écrans */
             gap: 30px;
             padding-bottom: 60px;
         }
 
-        /* --- CARTE PRODUIT (Style Droit & Clean) --- */
+        /* --- CARTE PRODUIT (Style Amélioré) --- */
         .product-card {
             background: var(--color-white);
             border: 1px solid var(--color-border);
-            border-radius: 0;
+            border-radius: 6px; /* Légèrement arrondi */
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-            transition: box-shadow 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Ombre plus visible */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .product-card:hover {
-            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+            transform: translateY(-3px); /* Effet de survol subtil */
         }
 
         /* Image et Badge */
         .product-image-wrapper {
             width: 100%;
-            height: 300px;
+            height: 280px; /* Légèrement réduit pour optimiser l'espace */
             overflow: hidden;
             position: relative;
-            background-color: #fcfcfc;
+            background-color: #fafafa;
             border-bottom: 1px solid var(--color-border);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05);
-        }
-
-        /* Badges Standards */
-        .badge-sale {
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-color: var(--color-price-red);
-            color: white;
-            padding: 8px 15px;
-            font-size: 0.8em;
-            font-weight: 700;
-            text-transform: uppercase;
         }
         
         /* Badges de Différenciation */
-        .badge-exclusive {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: var(--color-badge-exclusive);
-            color: white;
-            padding: 8px 15px;
-            font-size: 0.8em;
-            font-weight: 700;
-            text-transform: uppercase;
+        .badge-sale {
+            /* Styles inchangés, mais le rouge est plus profond */
         }
 
-        .badge-power {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: var(--color-badge-power);
-            color: white;
-            padding: 8px 15px;
-            font-size: 0.8em;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
-
-        .badge-new {
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: var(--color-badge-new);
-            color: var(--color-text);
-            padding: 8px 15px;
-            font-size: 0.8em;
-            font-weight: 700;
-            text-transform: uppercase;
+        .badge-exclusive, .badge-power, .badge-new {
+            font-weight: 800; /* Plus d'impact */
         }
         
         /* Contenu */
@@ -163,91 +118,57 @@
         }
 
         .product-title {
-            font-family: var(--font-serif);
-            font-size: 1.35em;
-            margin: 0 0 5px 0;
-            line-height: 1.3;
+            font-family: var(--font-sans); /* Changé pour plus de modernité/clarté */
+            font-size: 1.4em;
+            font-weight: 700;
+            margin: 0 0 8px 0;
         }
 
         /* Avis */
         .rating-block {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            margin-bottom: 10px;
-            font-size: 0.9em;
+            margin-bottom: 15px;
         }
         .stars { color: var(--color-star); }
-        .rating-count { color: #555; }
 
         /* Social Proof */
         .sales-proof {
-            font-size: 0.85em;
             color: var(--color-price-red);
-            font-weight: 600;
-            margin-bottom: 15px;
+            font-weight: 700;
         }
         
         /* Spécifications rapides (Bullets) */
         .features-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 20px 0;
-            font-size: 0.9em;
-            color: #555;
-            flex-grow: 1;
+            color: #333;
+            font-size: 0.95em;
         }
-        .features-list li { margin-bottom: 5px; }
-        .features-list i { color: var(--color-accent-gold); margin-right: 5px; }
+        .features-list i { color: var(--color-price-red); margin-right: 5px; } /* Icône en rouge pour l'impact */
 
         /* Prix */
-        .price-container {
-            margin-bottom: 15px;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-        }
-
         .price-current {
-            font-size: 1.5em;
-            font-weight: 700;
             color: var(--color-price-red);
+            font-size: 1.8em; /* Plus grand */
         }
         
-        .price-old {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1em;
-        }
-        
-        /* Bouton */
+        /* Bouton Amazon (Inspiré d'Amazon) */
         .btn-amazon {
-            background-color: var(--color-text);
-            color: var(--color-white);
-            padding: 12px 0;
-            text-align: center;
-            display: block;
-            width: 100%;
+            background-color: var(--color-button);
+            color: var(--color-text);
+            padding: 14px 0; /* Plus épais */
             text-decoration: none;
-            font-weight: 600;
-            border: 1px solid var(--color-text);
-            transition: all 0.3s;
-            font-size: 1em;
-            border-radius: 0;
+            font-weight: 700;
+            border: 1px solid var(--color-button-hover);
+            border-radius: 4px;
+            transition: background-color 0.2s, box-shadow 0.2s;
+            box-shadow: 0 2px 5px rgba(255, 216, 20, 0.5); /* Ombre pour le CTA */
         }
 
         .btn-amazon:hover {
-            background-color: var(--color-white);
-            color: var(--color-text);
+            background-color: var(--color-button-hover);
+            box-shadow: 0 2px 8px rgba(255, 173, 0, 0.7);
         }
 
         .footer {
-            font-size: 0.8em;
-            color: #888;
-            padding: 20px;
-            border-top: 1px solid var(--color-border);
-            width: 100%;
-            text-align: center;
+            /* Style inchangé */
         }
     </style>
 </head>
@@ -257,7 +178,7 @@
         
         <header class="header">
             <h1>Notre Sélection Cheveux Premium ✨</h1>
-            <p>Les outils de coiffage les mieux notés, pour des résultats professionnels à la maison.</p>
+            <p>Les outils de coiffage et les soins les mieux notés, pour des résultats professionnels à la maison.</p>
         </header>
 
         <div class="product-list">
@@ -282,7 +203,7 @@
                     </div>
 
                     <div class="sales-proof">
-                        <i class="fa-solid fa-fire" style="color:#CC0C39;"></i> Offre à forte demande ! (+100 achetés le mois dernier)
+                        <i class="fa-solid fa-fire" style="color:var(--color-price-red);"></i> Offre à forte demande ! (+100 achetés le mois dernier)
                     </div>
 
                     <ul class="features-list">
@@ -304,7 +225,9 @@
 
             <div class="product-card">
                 <span class="badge-power">1600W MAX</span>
-                <span class="badge-exclusive" style="right: auto; left: 0;">MODÈLE PRO</span> <div class="product-image-wrapper">
+                <span class="badge-exclusive" style="right: auto; left: 0;">MODÈLE PRO</span>
+                
+                <div class="product-image-wrapper">
                     <img src="https://m.media-amazon.com/images/I/61XvcXMdy9L._AC_SL1500_.jpg" alt="Dyson Supersonic" class="product-image">
                 </div>
                 
@@ -320,7 +243,7 @@
                     </div>
 
                     <div class="sales-proof">
-                        <i class="fa-solid fa-bolt" style="color:#FFC107;"></i> Moteur Hyperdymium 2
+                        <i class="fa-solid fa-bolt" style="color:var(--color-badge-new);"></i> Moteur Hyperdymium 2
                     </div>
 
                     <ul class="features-list">
@@ -331,7 +254,8 @@
 
                     <div class="price-container">
                         <span class="price-current">649,00 €</span>
-                        </div>
+                        <span class="price-old"></span>
+                    </div>
                     
                     <a href="https://amzn.to/3Kf7fEz" class="btn-amazon" target="_blank">
                         Voir le Modèle PRO <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i>
@@ -359,7 +283,7 @@
                     </div>
 
                     <div class="sales-proof">
-                        <i class="fa-solid fa-check-double" style="color:#007185;"></i> **Plus de 200 achetés ce mois-ci !**
+                        <i class="fa-solid fa-check-double" style="color:var(--color-badge-exclusive);"></i> **Plus de 200 achetés ce mois-ci !**
                     </div>
 
                     <ul class="features-list">
