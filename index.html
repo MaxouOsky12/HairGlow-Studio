@@ -3,18 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dyson Airwrap™ - Offre Exclusive ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Dyson Airwrap™ - Offre Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
     <style>
         :root {
-            --color-bg: #f8f8f8;
-            --color-white: #ffffff;
-            --color-text: #111111;
-            --color-grey: #666666;
-            --color-gold: #c6a87c; 
-            --color-border: #e0e0e0;
+            --color-bg: #ffffff;
+            --color-text: #0F1111; /* Noir Amazon */
+            --color-price-red: #CC0C39;
+            --color-link: #007185;
+            --color-border: #e7e7e7;
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
         }
@@ -26,202 +25,206 @@
             margin: 0;
             padding: 0;
             display: flex;
-            flex-direction: column;
-            align-items: center;
+            justify-content: center;
             min-height: 100vh;
         }
 
         .container {
             width: 90%;
-            max-width: 1100px; /* Plus large pour un seul produit */
-            margin: 0 auto;
-            flex-grow: 1;
-            display: flex;
-            align-items: center; /* Centre verticalement */
-            justify-content: center;
+            max-width: 1200px;
             padding: 40px 0;
-        }
-
-        /* --- CARTE PRODUIT HERO (Layout 2 colonnes) --- */
-        .product-hero {
-            background: var(--color-white);
-            border: 1px solid var(--color-border);
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 50% Image / 50% Texte */
-            width: 100%;
-            position: relative;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            grid-template-columns: 1fr 1fr; /* 2 Colonnes : Image | Infos */
+            gap: 50px;
+            align-items: start;
         }
 
-        /* --- COLONNE IMAGE --- */
-        .hero-image-wrapper {
-            background-color: #f4f4f4;
-            position: relative;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 500px;
-        }
-
-        .hero-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .product-hero:hover .hero-image {
-            transform: scale(1.03);
-        }
-
-        /* Badges */
-        .badge {
-            position: absolute;
+        /* --- COLONNE GAUCHE : IMAGE --- */
+        .image-section {
+            position: sticky;
             top: 20px;
-            left: 20px;
-            padding: 8px 14px;
-            font-size: 0.8em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            z-index: 2;
         }
-        .badge.best-seller { background-color: #d4af37; color: #fff; }
-        .badge.tech { background-color: #111; color: #fff; top: 60px; } /* 2ème badge */
 
-        /* --- COLONNE CONTENU --- */
-        .hero-content {
-            padding: 40px;
+        .product-image-container {
+            width: 100%;
+            background-color: #fff;
+            border: 1px solid #eee; /* Bordure très fine */
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .product-image {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        /* --- COLONNE DROITE : INFOS --- */
+        .info-section {
             display: flex;
             flex-direction: column;
-            justify-content: center;
         }
 
-        .brand-label {
-            color: var(--color-gold);
-            text-transform: uppercase;
+        /* Badge Premium */
+        .badge-premium {
+            color: #007185;
+            font-size: 0.85em;
             font-weight: 700;
-            letter-spacing: 2px;
-            font-size: 0.9em;
-            margin-bottom: 10px;
+            letter-spacing: 0.5px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
         }
 
         .product-title {
             font-family: var(--font-serif);
-            font-size: 2.2em;
+            font-size: 2em;
+            line-height: 1.2;
             margin: 0 0 10px 0;
-            line-height: 1.1;
+            color: #0F1111;
         }
 
-        .rating {
-            color: #111;
-            font-weight: 600;
-            margin-bottom: 20px;
-            font-size: 0.95em;
-        }
-        .rating i { color: #f1c40f; }
-
-        /* Points forts (Bullets) */
-        .key-benefits {
-            margin-bottom: 25px;
-            padding-bottom: 25px;
-            border-bottom: 1px solid var(--color-border);
-        }
-        .key-benefits ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-        .key-benefits li {
-            margin-bottom: 10px;
-            font-size: 1.05em;
+        /* Section Avis */
+        .rating-block {
             display: flex;
             align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            font-size: 0.9em;
         }
-        .key-benefits li i {
-            color: var(--color-gold);
+        .stars { color: #DE7921; } /* Couleur étoiles Amazon */
+        .rating-count { color: #007185; text-decoration: none; }
+        
+        .sales-proof {
+            font-size: 0.9em;
+            color: #565959;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .badge-demand {
+            background-color: #cc0c39;
+            color: white;
+            padding: 4px 10px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            display: inline-block;
+            margin-bottom: 15px;
+            border-radius: 2px;
+        }
+
+        /* Section Prix */
+        .price-block {
+            border-top: 1px solid var(--color-border);
+            border-bottom: 1px solid var(--color-border);
+            padding: 20px 0;
+            margin-bottom: 25px;
+        }
+
+        .deal-badge {
+            color: #CC0C39;
+            font-size: 1.6em;
+            font-weight: 300;
             margin-right: 10px;
         }
 
-        /* Specs Grid */
-        .specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
-            margin-bottom: 30px;
-            font-size: 0.85em;
-            color: var(--color-grey);
-            background: #fafafa;
-            padding: 15px;
-            border: 1px solid #eee;
-        }
-
-        .spec-item strong {
-            display: block;
-            color: var(--color-text);
-            margin-bottom: 2px;
-        }
-
-        /* Prix & Bouton */
-        .price-section {
-            margin-bottom: 20px;
-            display: flex;
-            align-items: baseline;
-            gap: 15px;
-        }
-        .price-old { text-decoration: line-through; color: #999; font-size: 1.2em; }
-        .price-current { font-size: 2em; font-weight: 700; color: var(--color-text); }
-
-        .btn-buy {
-            display: block;
-            width: 100%;
-            background-color: var(--color-text);
-            color: var(--color-white);
-            text-align: center;
-            padding: 18px 0;
-            text-decoration: none;
+        .price-main {
+            font-size: 1.8em;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid var(--color-text);
-            transition: all 0.3s;
-        }
-        .btn-buy:hover {
-            background-color: var(--color-white);
-            color: var(--color-text);
+            color: #0F1111;
         }
         
-        .stock-alert {
+        .price-comparison {
+            color: #565959;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+        
+        .price-old { text-decoration: line-through; }
+
+        .vat-notice {
+            font-size: 0.85em;
+            color: #565959;
             margin-top: 10px;
-            font-size: 0.8em;
-            color: #d32f2f;
-            text-align: center;
-            font-weight: 600;
+            display: block;
         }
 
-        .footer {
-            font-size: 0.8em;
-            color: #888;
-            padding: 20px;
-            text-align: center;
+        /* Tableau Spécifications (Style "Clean") */
+        .specs-table {
             width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 25px;
+            font-size: 0.95em;
         }
 
-        /* --- MOBILE RESPONSIVE --- */
-        @media (max-width: 850px) {
-            .product-hero {
-                grid-template-columns: 1fr; /* Empilement vertical */
-            }
-            .hero-image-wrapper {
-                min-height: 350px;
-            }
-            .product-title {
-                font-size: 1.8em;
-            }
+        .specs-table tr {
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .specs-table th {
+            text-align: left;
+            padding: 10px 0;
+            color: #565959;
+            font-weight: 600;
+            width: 40%;
+        }
+
+        .specs-table td {
+            text-align: left;
+            padding: 10px 0;
+            color: #0F1111;
+            font-weight: 700;
+        }
+
+        /* Liste Composants */
+        .features-list {
+            margin-bottom: 30px;
+        }
+        .features-list strong { display: block; margin-bottom: 5px; }
+        .features-list ul {
+            padding-left: 20px;
+            margin: 0;
+            color: #333;
+        }
+        .features-list li { margin-bottom: 5px; }
+
+        /* Bouton Action */
+        .btn-amazon {
+            background-color: #FFD814; /* Jaune Amazon */
+            border: 1px solid #FCD200;
+            color: #0F1111;
+            padding: 15px 0;
+            text-align: center;
+            display: block;
+            width: 100%;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 20px; /* Légèrement arrondi style Amazon bouton achat */
+            transition: background 0.2s;
+            font-size: 1.1em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .btn-amazon:hover {
+            background-color: #F7CA00;
+        }
+
+        /* Pied de page */
+        .footer-legal {
+            margin-top: auto;
+            font-size: 0.75em;
+            color: #565959;
+            text-align: center;
+            padding-top: 20px;
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
             .container {
-                padding: 20px 0;
+                grid-template-columns: 1fr;
+                gap: 20px;
             }
+            .image-section { position: static; }
         }
     </style>
 </head>
@@ -229,71 +232,95 @@
 
     <div class="container">
         
-        <div class="product-hero">
-            
-            <div class="hero-image-wrapper">
-                <span class="badge best-seller">Best Seller #1</span>
-                <span class="badge tech">Technologie Coanda</span>
-                <img src="https://m.media-amazon.com/images/I/61s82j5LwWL._AC_SL1000_.jpg" alt="Dyson Airwrap Multi-Styler" class="hero-image">
-            </div>
-
-            <div class="hero-content">
-                <span class="brand-label">DYSON</span>
-                <h1 class="product-title">Airwrap™ Multi-Styler et Sécheur</h1>
-                
-                <div class="rating">
-                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> 
-                    4.8/5 (Basé sur 2,450 avis)
-                </div>
-
-                <div class="key-benefits">
-                    <ul>
-                        <li><i class="fa-solid fa-check"></i> <strong>Coiffage Sans Chaleur Extrême</strong> (Protection max)</li>
-                        <li><i class="fa-solid fa-check"></i> Boucles, Ondulations, Lissage & Volume</li>
-                        <li><i class="fa-solid fa-check"></i> Séchage et coiffage simultanés</li>
-                    </ul>
-                </div>
-
-                <div class="specs-grid">
-                    <div class="spec-item">
-                        <strong>Couleur</strong>
-                        Nickel / Cuivre Brillant
-                    </div>
-                    <div class="spec-item">
-                        <strong>Puissance</strong>
-                        1300 Watts (240V)
-                    </div>
-                    <div class="spec-item">
-                        <strong>Technologie</strong>
-                        Ionique & Effet Coanda
-                    </div>
-                    <div class="spec-item">
-                        <strong>Réglages</strong>
-                        3 Vitesses / 6 Paramètres
-                    </div>
-                    <div class="spec-item" style="grid-column: span 2;">
-                        <strong>Inclus</strong>
-                        Barillets friseurs, Brosse de lissage, Séchoir lissant Coanda 2-en-1
-                    </div>
-                </div>
-
-                <div class="price-section">
-                    <span class="price-old">599,00 €</span> <span class="price-current">549,00 €</span>
-                </div>
-
-                <a href="VOTRE_LIEN_AFFILIE_AMAZON_ICI" class="btn-buy" target="_blank">
-                    Voir la disponibilité sur Amazon <i class="fa-solid fa-arrow-right" style="margin-left:8px;"></i>
-                </a>
-                <div class="stock-alert"><i class="fa-solid fa-circle-exclamation"></i> Stock limité en cette période</div>
-
+        <div class="image-section">
+            <div class="product-image-container">
+                <img src="https://example.com/votre-image-dyson.jpg" alt="Dyson Airwrap" class="product-image">
             </div>
         </div>
 
-    </div>
+        <div class="info-section">
+            
+            <span class="badge-premium">Beauté Premium</span>
+            <h1 class="product-title">Dyson Airwrap™ : Multi-Styler et Sécheur</h1>
+            
+            <div class="rating-block">
+                <span class="stars">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star-half-stroke"></i> </span>
+                <span>4,2</span>
+                <span style="color:#ddd">|</span>
+                <a href="#" class="rating-count">(3 177 avis)</a>
+            </div>
 
-    <footer class="footer">
-        &copy; 2025 Hair Glow Studio. En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
-    </footer>
+            <div class="sales-proof">
+                <span class="badge-demand">Offre à forte demande</span><br>
+                Plus de 100 achetés au cours du mois dernier
+            </div>
+
+            <div class="price-block">
+                <div>
+                    <span class="deal-badge">-25%</span>
+                    <span class="price-main">299,00€</span>
+                </div>
+                <div class="price-comparison">
+                    Prix conseillé : <span class="price-old">399,00€</span>
+                </div>
+                <span class="vat-notice">Les prix des articles vendus incluent la TVA. Retours GRATUITS.</span>
+            </div>
+
+            <table class="specs-table">
+                <tr>
+                    <th>Marque</th>
+                    <td>Dyson</td>
+                </tr>
+                <tr>
+                    <th>Couleur</th>
+                    <td>Nickel Brillant / Cuivre Brillant</td>
+                </tr>
+                <tr>
+                    <th>Puissance</th>
+                    <td>1300 Watts</td>
+                </tr>
+                <tr>
+                    <th>Tension</th>
+                    <td>240 Volts</td>
+                </tr>
+                <tr>
+                    <th>Technologie</th>
+                    <td>Ionique, Effet Coanda</td>
+                </tr>
+            </table>
+
+            <div class="features-list">
+                <strong>Composants inclus :</strong>
+                <ul>
+                    <li>Barillet friseur/ondeur</li>
+                    <li>Brosse de contrôle et modelage</li>
+                    <li>Séchoir lissant multifonctionnel 2 en 1 Coanda</li>
+                </ul>
+            </div>
+            
+            <div class="features-list">
+                <strong>Caractéristique spéciale :</strong>
+                <p style="margin:0; color:#333; font-size:0.95em;">
+                    Régulation intelligente de la chaleur, Touche air froid, 3 vitesses, 6 paramètres.
+                </p>
+            </div>
+
+            <a href="VOTRE_LIEN_AFFILIE_ICI" class="btn-amazon">
+                Voir l'offre sur Amazon
+            </a>
+
+            <div class="footer-legal">
+                Top Brand Dyson : 92% de notes positives.<br>
+                En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
+            </div>
+
+        </div>
+    </div>
 
 </body>
 </html>
