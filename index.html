@@ -4,34 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mes Produits Cheveux Premium ✨</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
     <style>
-        /* --- DÉCLARATION DES VARIABLES (COULEURS/POLICES) --- */
         :root {
+            --color-bg: #fafafa; /* Gris très très clair pour faire ressortir les cartes blanches */
             --color-white: #ffffff;
-            --color-background: #fdfcf9;
-            --color-text-dark: #1f1f1f;
-            --color-accent-gold: #b8986d; 
-            --color-accent-hover: #9c805a; 
-            --color-border-light: #e0e0e0; /* Bordure plus nette */
-            --color-rank-1: #ffd700; /* Or Vif pour le Top */
-            --color-rank-2: #c0c0c0; /* Argent pour le second */
-            --color-rank-3: #cd7f32; /* Bronze */
+            --color-text: #111111;
+            --color-gold: #c6a87c;
+            --color-gold-hover: #b08d55;
+            --color-border: #e5e5e5;
+            --color-badge-bg: #111111;
+            --color-badge-text: #ffffff;
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
-            --max-width: 850px;
         }
 
-        /* --- STYLE GLOBAL --- */
         body {
             font-family: var(--font-sans);
-            background-color: var(--color-background);
-            color: var(--color-text-dark);
+            background-color: var(--color-bg);
+            color: var(--color-text);
             margin: 0;
             padding: 0;
-            line-height: 1.6;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -39,152 +34,185 @@
         }
 
         .container {
-            width: 95%;
-            max-width: var(--max-width);
+            width: 90%;
+            max-width: 900px;
             margin: 0 auto;
             flex-grow: 1;
         }
 
-        /* --- HEADER & TITRE --- */
+        /* --- HEADER --- */
         .header {
             text-align: center;
-            padding: 50px 0 30px 0;
+            padding: 60px 0 40px 0;
         }
 
         .header h1 {
             font-family: var(--font-serif);
-            font-weight: 700;
-            font-size: clamp(1.8em, 5vw, 3em);
-            margin: 0;
-            color: var(--color-text-dark);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+        
+        .header p {
+            color: #666;
+            font-size: 1.1em;
         }
 
-        /* --- LISTE DE PRODUITS --- */
+        /* --- GRILLE PRODUIT --- */
         .product-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px; 
-            padding: 20px 0;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            padding-bottom: 60px;
         }
 
-        /* --- CARTE PRODUIT (Plus droite) --- */
+        /* --- CARTE (Design "Clean & Straight") --- */
         .product-card {
             background: var(--color-white);
-            border: 1px solid var(--color-border-light);
-            border-radius: 4px; /* Moins d'arrondi, style plus droit */
-            overflow: hidden;
+            border: 1px solid var(--color-border);
+            border-radius: 0px; /* Bords droits */
             display: flex;
             flex-direction: column;
-            transition: box-shadow 0.3s ease;
-            position: relative; 
+            position: relative;
+            transition: transform 0.2s ease;
         }
 
         .product-card:hover {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15); /* Ombre nette */
-            transform: none; /* Pas de translation pour un style plus stable */
+            border-color: var(--color-gold); /* Subtil changement de bordure au survol */
+            transform: translateY(-2px);
         }
 
+        /* --- IMAGE & BADGE --- */
         .product-image-wrapper {
             width: 100%;
-            height: 250px; /* Légèrement réduit pour l'espace */
+            height: 300px;
             overflow: hidden;
-            border-bottom: 1px solid var(--color-border-light);
+            position: relative;
+            background-color: #f4f4f4;
         }
 
         .product-image {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image {
+            transform: scale(1.05); /* Zoom léger sur l'image */
         }
 
+        /* Badge INTÉRIEUR (Ne dépasse pas) */
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background-color: var(--color-badge-bg);
+            color: var(--color-badge-text);
+            padding: 6px 12px;
+            font-size: 0.75em;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 2;
+        }
+
+        .badge.best-seller { background-color: #d4af37; color: #fff; } /* Or */
+        .badge.promo { background-color: #d32f2f; color: #fff; } /* Rouge */
+
+        /* --- CONTENU --- */
         .product-content {
-            padding: 20px;
+            padding: 25px;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
-        .product-content h2 {
+        .product-title {
             font-family: var(--font-serif);
-            font-weight: 700;
-            font-size: 1.3em; /* Légèrement plus petit */
+            font-size: 1.5em;
             margin: 0 0 5px 0;
-            color: var(--color-text-dark);
+            line-height: 1.2;
         }
 
-        /* --- Classement (Nouveau) --- */
-        .product-ranking {
-            position: absolute;
-            top: 0;
-            left: 0;
-            color: var(--color-white);
-            padding: 8px 12px;
-            font-size: 0.85em;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%); /* Forme de ruban */
-            z-index: 10;
-        }
-
-        /* Styles spécifiques au classement */
-        .rank-1 { background-color: var(--color-rank-1); color: var(--color-text-dark); }
-        .rank-2 { background-color: var(--color-rank-2); }
-        .rank-3 { background-color: var(--color-rank-3); }
-
-        /* Étoiles de notation */
-        .product-rating {
-            color: var(--color-accent-gold);
+        .rating {
+            color: #f1c40f;
             font-size: 0.9em;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 600;
+            color: #111;
         }
-        
-        .product-content p {
-            font-size: 0.9em; /* Plus compact */
+        .rating i { color: #f1c40f; }
+
+        /* LISTE À PUCES (Meilleur pour la conversion) */
+        .features {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            font-size: 0.95em;
             color: #555;
-            margin: 0 0 15px 0;
             flex-grow: 1;
         }
 
-        .product-price {
-            font-weight: 700;
-            color: var(--color-text-dark);
-            font-size: 1.3em; 
+        .features li {
+            margin-bottom: 8px;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .features li i {
+            color: var(--color-gold);
+            margin-right: 8px;
+            margin-top: 4px; /* Alignement */
+        }
+
+        /* --- PRIX & ACTION --- */
+        .price-container {
             margin-bottom: 15px;
-            display: block;
+            align-items: baseline;
+            display: flex;
+            gap: 10px;
         }
 
-        /* --- BOUTON D'AFFILIATION (Plus droit) --- */
-        .amazon-button {
-            display: block;
-            width: 100%;
-            padding: 12px 20px; /* Légèrement moins de padding vertical */
-            background-color: var(--color-accent-gold);
-            color: var(--color-white);
-            text-decoration: none;
-            border-radius: 0; /* Plus de bordure arrondie */
+        .old-price {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1em;
+        }
+
+        .current-price {
+            font-size: 1.6em;
             font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-size: 0.9em;
+            color: var(--color-text);
+        }
+
+        .btn {
+            display: block;
+            width: 100%;
+            background-color: var(--color-text); /* Noir chic */
+            color: var(--color-white);
             text-align: center;
-            transition: background-color 0.3s ease;
+            padding: 15px 0;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid var(--color-text);
+            transition: all 0.3s;
         }
 
-        .amazon-button:hover {
-            background-color: var(--color-accent-hover);
+        .btn:hover {
+            background-color: var(--color-white);
+            color: var(--color-text);
         }
 
-        /* --- FOOTER --- */
         .footer {
-            /* Mêmes styles qu'avant, pour la conformité */
+            font-size: 0.8em;
+            color: #888;
+            padding: 20px;
+            border-top: 1px solid var(--color-border);
             width: 100%;
             text-align: center;
-            padding: 25px 0;
-            font-size: 0.75em;
-            color: #888;
-            border-top: 1px solid var(--color-border-light);
-            margin-top: 50px;
         }
     </style>
 </head>
@@ -193,66 +221,87 @@
     <div class="container">
         
         <header class="header">
-            <h1>Mes produits cheveux premium ✨</h1>
-            <p style="font-size: 1.1em; color: #555; margin-top: 10px;">Le guide complet des meilleurs outils pour des cheveux sains et sublimes.</p>
+            <h1>La Sélection Dyson ✨</h1>
+            <p>Les outils professionnels pour des résultats salon à la maison.</p>
         </header>
 
-        <section class="product-list">
+        <div class="product-list">
             
             <div class="product-card">
-                <div class="product-ranking rank-1">#1 Top Choix</div>
+                <span class="badge best-seller">Best Seller</span>
                 <div class="product-image-wrapper">
-                    <img src="https://example.com/images/dyson_airwrap.jpg" alt="Dyson Airwrap Complete" class="product-image">
+                    <img src="https://example.com/images/dyson_airwrap.jpg" alt="Dyson Airwrap" class="product-image">
                 </div>
                 <div class="product-content">
-                    <h2>Dyson Airwrap™ Multistyler</h2>
-                    <div class="product-rating">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> (4.8/5)
+                    <h2 class="product-title">Dyson Airwrap™</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i> 4.8/5 (2,450 avis)</div>
+                    
+                    <ul class="features">
+                        <li><i class="fa-solid fa-check"></i> Boucles, ondulations & lissage</li>
+                        <li><i class="fa-solid fa-check"></i> <strong>Zéro dommage</strong> thermique</li>
+                        <li><i class="fa-solid fa-check"></i> Technologie Coanda brevetée</li>
+                    </ul>
+
+                    <div class="price-container">
+                        <span class="current-price">499,00 €</span>
                     </div>
-                    <p>Le styler tout-en-un. Réalisez des boucles, des ondulations et des lissages sans chaleur extrême. Indispensable pour la santé du cheveu.</p>
-                    <span class="product-price">499,00 €</span>
-                    <a href="VOTRE_LIEN_AFFILIE_AMAZON_1" target="_blank" class="amazon-button">Voir le prix sur Amazon</a>
+                    
+                    <a href="LIEN_AMAZON_1" class="btn">Voir l'offre <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></a>
                 </div>
             </div>
 
             <div class="product-card">
-                 <div class="product-ranking rank-2">#2 Meilleure Efficacité</div>
+                <span class="badge promo">-15% AUJOURD'HUI</span>
                 <div class="product-image-wrapper">
                     <img src="https://example.com/images/dyson_supersonic.jpg" alt="Dyson Supersonic" class="product-image">
                 </div>
                 <div class="product-content">
-                    <h2>Dyson Supersonic</h2>
-                    <div class="product-rating">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> (4.7/5)
+                    <h2 class="product-title">Dyson Supersonic™</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i> 4.7/5 (1,800 avis)</div>
+                    
+                    <ul class="features">
+                        <li><i class="fa-solid fa-check"></i> Séchage ultra-rapide</li>
+                        <li><i class="fa-solid fa-check"></i> Protection brillance naturelle</li>
+                        <li><i class="fa-solid fa-check"></i> Léger et silencieux</li>
+                    </ul>
+
+                    <div class="price-container">
+                        <span class="old-price">449,00 €</span>
+                        <span class="current-price">429,00 €</span>
                     </div>
-                    <p>Sèche-cheveux intelligent et rapide, doté d'un contrôle thermique. Séchage ultra-rapide tout en préservant l'éclat de vos cheveux.</p>
-                    <span class="product-price">429,00 €</span>
-                    <a href="VOTRE_LIEN_AFFILIE_AMAZON_2" target="_blank" class="amazon-button">Voir le prix sur Amazon</a>
+                    
+                    <a href="LIEN_AMAZON_2" class="btn">Voir l'offre <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></a>
                 </div>
             </div>
 
             <div class="product-card">
-                 <div class="product-ranking rank-3">#3 Essentiel Soin</div>
+                <span class="badge">COUP DE CŒUR</span>
                 <div class="product-image-wrapper">
-                    <img src="https://example.com/images/kerastase_elixir.jpg" alt="Kérastase Elixir Ultime" class="product-image">
+                    <img src="https://example.com/images/kerastase_elixir.jpg" alt="Huile Kérastase" class="product-image">
                 </div>
                 <div class="product-content">
-                    <h2>Kérastase Elixir Ultime</h2>
-                    <div class="product-rating">
-                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> (5.0/5)
+                    <h2 class="product-title">Kérastase Elixir Ultime</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i> 5.0/5 (5,000+ avis)</div>
+                    
+                    <ul class="features">
+                        <li><i class="fa-solid fa-check"></i> Brillance immédiate</li>
+                        <li><i class="fa-solid fa-check"></i> Protection chaleur 230°C</li>
+                        <li><i class="fa-solid fa-check"></i> Parfum iconique</li>
+                    </ul>
+
+                    <div class="price-container">
+                        <span class="current-price">35,50 €</span>
                     </div>
-                    <p>L'huile iconique pour une brillance intense. Nourrit profondément, apporte de la douceur et protège de la chaleur jusqu'à 230°C.</p>
-                    <span class="product-price">35,50 €</span>
-                    <a href="VOTRE_LIEN_AFFILIE_AMAZON_3" target="_blank" class="amazon-button">Voir le prix sur Amazon</a>
+                    
+                    <a href="LIEN_AMAZON_3" class="btn">Voir l'offre <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i></a>
                 </div>
             </div>
-            
-            </section>
 
+        </div>
     </div>
 
     <footer class="footer">
-        **Avertissement d'Affiliation :** Tous les produits sont présentés via Amazon Affiliates. Je perçois une commission sur les achats sans coût additionnel pour vous. &copy; 2025
+        &copy; 2025 Hair Glow Studio. Liens affiliés Amazon.
     </footer>
 
 </body>
