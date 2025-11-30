@@ -4,26 +4,28 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>La Sélection Premium Dyson & Co. ✨</title>
+    
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
     <style>
+        /* --- VARIABLES GLOBALES (Améliorées) --- */
         :root {
-            --color-bg: #f5f5f5; /* Légèrement plus clair */
+            --color-bg: #fdfdfd; /* Arrière-plan très clair */
             --color-white: #ffffff;
-            --color-text: #0F1111;
-            --color-price-red: #B12704; /* Rouge Amazon classique, plus profond */
-            --color-border: #e0e0e0;
-            --color-star: #FF9900; /* Jaune or plus standard pour les étoiles */
-            --color-accent-gold: #c6a87c;
+            --color-text: #1a1a1a; /* Texte noir profond */
+            --color-price-red: #B12704; /* Rouge prix plus professionnel (Amazon) */
+            --color-border: #e8e8e8; /* Bordure très claire */
+            --color-star: #FF9900; /* Jaune standard pour les notes */
+            --color-accent: #c6a87c; /* Couleur accent (gold/bronze pour les features) */
+            --color-cta: #FFD814; /* Jaune/Orange pour le bouton */
+            --color-cta-hover: #ffad00;
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
-            /* Nouveaux badges */
-            --color-badge-power: #03a854; /* Vert plus vif */
-            --color-badge-exclusive: #007185;
+            /* Badges */
+            --color-badge-power: #1e8449; 
+            --color-badge-exclusive: #007185; 
             --color-badge-new: #FFA700;
-            --color-button: #FFD814; /* Couleur bouton Amazon */
-            --color-button-hover: #ffad00;
         }
 
         body {
@@ -46,15 +48,17 @@
             flex-grow: 1;
         }
 
-        /* --- HEADER & TITRE --- */
+        /* --- HEADER & TITRE (Amélioré) --- */
         .header {
             text-align: center;
-            padding: 20px 0 40px 0;
+            padding: 20px 0 30px 0;
+            border-bottom: 2px solid var(--color-border); /* Bordure basse pour séparer */
+            margin-bottom: 30px;
         }
 
         .header h1 {
             font-family: var(--font-serif);
-            font-size: 3em; /* Augmenté */
+            font-size: 3em; 
             margin-bottom: 5px;
             color: var(--color-text);
         }
@@ -62,51 +66,58 @@
         .header p {
             color: #555;
             font-size: 1.1em;
-            font-weight: 500;
+            max-width: 700px;
+            margin: 0 auto;
         }
 
         /* --- GRILLE PRODUIT --- */
         .product-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Adapté légèrement pour les petits écrans */
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
             padding-bottom: 60px;
         }
 
-        /* --- CARTE PRODUIT (Style Amélioré) --- */
+        /* --- CARTE PRODUIT (Améliorée) --- */
         .product-card {
             background: var(--color-white);
             border: 1px solid var(--color-border);
-            border-radius: 6px; /* Légèrement arrondi */
+            border-radius: 8px; /* Léger arrondi */
             display: flex;
             flex-direction: column;
             position: relative;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Ombre plus visible */
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05); /* Ombre subtile */
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
         }
 
         .product-card:hover {
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            transform: translateY(-3px); /* Effet de survol subtil */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
 
         /* Image et Badge */
         .product-image-wrapper {
             width: 100%;
-            height: 280px; /* Légèrement réduit pour optimiser l'espace */
+            height: 280px; 
             overflow: hidden;
             position: relative;
             background-color: #fafafa;
             border-bottom: 1px solid var(--color-border);
-        }
-        
-        /* Badges de Différenciation */
-        .badge-sale {
-            /* Styles inchangés, mais le rouge est plus profond */
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
         }
 
-        .badge-exclusive, .badge-power, .badge-new {
-            font-weight: 800; /* Plus d'impact */
+        .product-image {
+            /* Styles inchangés */
+        }
+        
+        /* Badges */
+        .badge-sale, .badge-exclusive, .badge-power, .badge-new {
+            padding: 6px 12px;
+            font-size: 0.75em; 
+            font-weight: 800;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+            z-index: 10;
         }
         
         /* Contenu */
@@ -118,57 +129,73 @@
         }
 
         .product-title {
-            font-family: var(--font-sans); /* Changé pour plus de modernité/clarté */
+            font-family: var(--font-sans); 
             font-size: 1.4em;
-            font-weight: 700;
-            margin: 0 0 8px 0;
+            font-weight: 600;
+            margin: 0 0 10px 0;
         }
 
         /* Avis */
         .rating-block {
             margin-bottom: 15px;
+            font-size: 1em;
         }
         .stars { color: var(--color-star); }
+        .rating-count { color: #888; } /* Moins de contraste pour le décompte */
 
         /* Social Proof */
         .sales-proof {
             color: var(--color-price-red);
             font-weight: 700;
+            font-size: 0.9em;
+            margin-bottom: 20px;
         }
         
         /* Spécifications rapides (Bullets) */
         .features-list {
-            color: #333;
+            color: #444;
             font-size: 0.95em;
         }
-        .features-list i { color: var(--color-price-red); margin-right: 5px; } /* Icône en rouge pour l'impact */
+        .features-list i { color: var(--color-accent); margin-right: 8px; }
 
         /* Prix */
         .price-current {
             color: var(--color-price-red);
-            font-size: 1.8em; /* Plus grand */
+            font-size: 1.8em; 
         }
         
-        /* Bouton Amazon (Inspiré d'Amazon) */
+        .price-old {
+            color: #aaa;
+            font-size: 1.1em;
+        }
+        
+        /* Bouton CTA (Amélioré) */
         .btn-amazon {
-            background-color: var(--color-button);
+            background-color: var(--color-cta); 
             color: var(--color-text);
-            padding: 14px 0; /* Plus épais */
-            text-decoration: none;
+            padding: 14px 0; 
             font-weight: 700;
-            border: 1px solid var(--color-button-hover);
+            border: 1px solid var(--color-cta-hover);
             border-radius: 4px;
             transition: background-color 0.2s, box-shadow 0.2s;
-            box-shadow: 0 2px 5px rgba(255, 216, 20, 0.5); /* Ombre pour le CTA */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1); 
         }
 
         .btn-amazon:hover {
-            background-color: var(--color-button-hover);
-            box-shadow: 0 2px 8px rgba(255, 173, 0, 0.7);
+            background-color: var(--color-cta-hover);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
+        /* --- FOOTER (Amélioré) --- */
         .footer {
-            /* Style inchangé */
+            font-size: 0.85em;
+            color: #999;
+            padding: 25px 20px;
+            border-top: 1px solid var(--color-border);
+            width: 100%;
+            max-width: 1200px;
+            text-align: center;
+            margin-top: auto; /* Pousse le pied de page vers le bas */
         }
     </style>
 </head>
@@ -254,7 +281,6 @@
 
                     <div class="price-container">
                         <span class="price-current">649,00 €</span>
-                        <span class="price-old"></span>
                     </div>
                     
                     <a href="https://amzn.to/3Kf7fEz" class="btn-amazon" target="_blank">
