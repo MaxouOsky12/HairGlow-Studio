@@ -3,17 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dyson Airwrap™ - Offre Premium</title>
+    <title>La Sélection Premium Dyson & Co. ✨</title>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
     
     <style>
         :root {
-            --color-bg: #ffffff;
-            --color-text: #0F1111; /* Noir Amazon */
+            --color-bg: #f8f8f8;
+            --color-white: #ffffff;
+            --color-text: #0F1111;
             --color-price-red: #CC0C39;
-            --color-link: #007185;
-            --color-border: #e7e7e7;
+            --color-border: #e0e0e0;
+            --color-star: #DE7921;
+            --color-accent-gold: #c6a87c;
             --font-serif: 'Playfair Display', serif;
             --font-sans: 'Inter', sans-serif;
         }
@@ -25,206 +27,198 @@
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
+            align-items: center;
             min-height: 100vh;
         }
 
         .container {
             width: 90%;
             max-width: 1200px;
+            margin: 0 auto;
             padding: 40px 0;
+            flex-grow: 1;
+        }
+
+        /* --- HEADER & TITRE --- */
+        .header {
+            text-align: center;
+            padding: 20px 0 40px 0;
+        }
+
+        .header h1 {
+            font-family: var(--font-serif);
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #555;
+            font-size: 1.1em;
+        }
+
+        /* --- GRILLE PRODUIT --- */
+        .product-list {
             display: grid;
-            grid-template-columns: 1fr 1fr; /* 2 Colonnes : Image | Infos */
-            gap: 50px;
-            align-items: start;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            padding-bottom: 60px;
         }
 
-        /* --- COLONNE GAUCHE : IMAGE --- */
-        .image-section {
-            position: sticky;
-            top: 20px;
+        /* --- CARTE PRODUIT (Style Droit & Clean) --- */
+        .product-card {
+            background: var(--color-white);
+            border: 1px solid var(--color-border);
+            border-radius: 0; /* Bords droits */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+            transition: box-shadow 0.3s ease;
         }
 
-        .product-image-container {
+        .product-card:hover {
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Image et Badge */
+        .product-image-wrapper {
             width: 100%;
-            background-color: #fff;
-            border: 1px solid #eee; /* Bordure très fine */
-            padding: 20px;
-            box-sizing: border-box;
+            height: 300px;
+            overflow: hidden;
+            position: relative;
+            background-color: #fcfcfc;
+            border-bottom: 1px solid var(--color-border);
         }
 
         .product-image {
             width: 100%;
-            height: auto;
-            display: block;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.5s ease;
         }
 
-        /* --- COLONNE DROITE : INFOS --- */
-        .info-section {
+        .product-card:hover .product-image {
+            transform: scale(1.05);
+        }
+
+        .badge-sale {
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-color: var(--color-price-red);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8em;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .badge-premium {
+            position: absolute;
+            top: 0;
+            right: 0;
+            background-color: var(--color-text);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8em;
+            font-weight: 700;
+        }
+        
+        /* Contenu */
+        .product-content {
+            padding: 20px;
             display: flex;
             flex-direction: column;
-        }
-
-        /* Badge Premium */
-        .badge-premium {
-            color: #007185;
-            font-size: 0.85em;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-            margin-bottom: 5px;
-            text-transform: uppercase;
+            flex-grow: 1;
         }
 
         .product-title {
             font-family: var(--font-serif);
-            font-size: 2em;
-            line-height: 1.2;
-            margin: 0 0 10px 0;
-            color: #0F1111;
+            font-size: 1.35em;
+            margin: 0 0 5px 0;
+            line-height: 1.3;
         }
 
-        /* Section Avis */
+        /* Avis */
         .rating-block {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
+            gap: 5px;
+            margin-bottom: 10px;
             font-size: 0.9em;
         }
-        .stars { color: #DE7921; } /* Couleur étoiles Amazon */
-        .rating-count { color: #007185; text-decoration: none; }
-        
+        .stars { color: var(--color-star); }
+        .rating-count { color: #555; }
+
+        /* Social Proof */
         .sales-proof {
-            font-size: 0.9em;
-            color: #565959;
-            margin-bottom: 20px;
-            font-weight: 500;
-        }
-
-        .badge-demand {
-            background-color: #cc0c39;
-            color: white;
-            padding: 4px 10px;
-            font-size: 0.75em;
-            font-weight: 700;
-            text-transform: uppercase;
-            display: inline-block;
-            margin-bottom: 15px;
-            border-radius: 2px;
-        }
-
-        /* Section Prix */
-        .price-block {
-            border-top: 1px solid var(--color-border);
-            border-bottom: 1px solid var(--color-border);
-            padding: 20px 0;
-            margin-bottom: 25px;
-        }
-
-        .deal-badge {
-            color: #CC0C39;
-            font-size: 1.6em;
-            font-weight: 300;
-            margin-right: 10px;
-        }
-
-        .price-main {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: #0F1111;
-        }
-        
-        .price-comparison {
-            color: #565959;
-            font-size: 0.9em;
-            margin-top: 5px;
-        }
-        
-        .price-old { text-decoration: line-through; }
-
-        .vat-notice {
             font-size: 0.85em;
-            color: #565959;
-            margin-top: 10px;
-            display: block;
-        }
-
-        /* Tableau Spécifications (Style "Clean") */
-        .specs-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 25px;
-            font-size: 0.95em;
-        }
-
-        .specs-table tr {
-            border-bottom: 1px solid #f0f0f0;
-        }
-
-        .specs-table th {
-            text-align: left;
-            padding: 10px 0;
-            color: #565959;
+            color: var(--color-price-red);
             font-weight: 600;
-            width: 40%;
+            margin-bottom: 15px;
         }
-
-        .specs-table td {
-            text-align: left;
-            padding: 10px 0;
-            color: #0F1111;
-            font-weight: 700;
-        }
-
-        /* Liste Composants */
+        
+        /* Spécifications rapides (Bullets) */
         .features-list {
-            margin-bottom: 30px;
-        }
-        .features-list strong { display: block; margin-bottom: 5px; }
-        .features-list ul {
-            padding-left: 20px;
-            margin: 0;
-            color: #333;
+            list-style: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+            font-size: 0.9em;
+            color: #555;
+            flex-grow: 1;
         }
         .features-list li { margin-bottom: 5px; }
+        .features-list i { color: var(--color-accent-gold); margin-right: 5px; }
 
-        /* Bouton Action */
+        /* Prix */
+        .price-container {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+        }
+
+        .price-current {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--color-price-red); /* Mettons le prix en rouge pour l'offre */
+        }
+        
+        .price-old {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 1em;
+        }
+        
+        /* Bouton */
         .btn-amazon {
-            background-color: #FFD814; /* Jaune Amazon */
-            border: 1px solid #FCD200;
-            color: #0F1111;
-            padding: 15px 0;
+            background-color: var(--color-text);
+            color: var(--color-white);
+            padding: 12px 0;
             text-align: center;
             display: block;
             width: 100%;
             text-decoration: none;
             font-weight: 600;
-            border-radius: 20px; /* Légèrement arrondi style Amazon bouton achat */
-            transition: background 0.2s;
-            font-size: 1.1em;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border: 1px solid var(--color-text);
+            transition: all 0.3s;
+            font-size: 1em;
+            border-radius: 0; /* Carré */
         }
 
         .btn-amazon:hover {
-            background-color: #F7CA00;
+            background-color: var(--color-white);
+            color: var(--color-text);
         }
 
-        /* Pied de page */
-        .footer-legal {
-            margin-top: auto;
-            font-size: 0.75em;
-            color: #565959;
+        .footer {
+            font-size: 0.8em;
+            color: #888;
+            padding: 20px;
+            border-top: 1px solid var(--color-border);
+            width: 100%;
             text-align: center;
-            padding-top: 20px;
-        }
-
-        /* Responsive Mobile */
-        @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .image-section { position: static; }
         }
     </style>
 </head>
@@ -232,95 +226,138 @@
 
     <div class="container">
         
-        <div class="image-section">
-            <div class="product-image-container">
-                <img src="https://example.com/votre-image-dyson.jpg" alt="Dyson Airwrap" class="product-image">
-            </div>
-        </div>
+        <header class="header">
+            <h1>Notre Sélection Cheveux Premium ✨</h1>
+            <p>Les outils de coiffage les mieux notés, pour des résultats professionnels à la maison.</p>
+        </header>
 
-        <div class="info-section">
+        <div class="product-list">
             
-            <span class="badge-premium">Beauté Premium</span>
-            <h1 class="product-title">Dyson Airwrap™ : Multi-Styler et Sécheur</h1>
-            
-            <div class="rating-block">
-                <span class="stars">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star-half-stroke"></i> </span>
-                <span>4,2</span>
-                <span style="color:#ddd">|</span>
-                <a href="#" class="rating-count">(3 177 avis)</a>
-            </div>
-
-            <div class="sales-proof">
-                <span class="badge-demand">Offre à forte demande</span><br>
-                Plus de 100 achetés au cours du mois dernier
-            </div>
-
-            <div class="price-block">
-                <div>
-                    <span class="deal-badge">-25%</span>
-                    <span class="price-main">299,00€</span>
+            <div class="product-card">
+                <span class="badge-sale">-25%</span>
+                <span class="badge-premium">Top Vente</span>
+                
+                <div class="product-image-wrapper">
+                    <img src="https://example.com/votre-image-airwrap.jpg" alt="Dyson Airwrap Multi-Styler" class="product-image">
                 </div>
-                <div class="price-comparison">
-                    Prix conseillé : <span class="price-old">399,00€</span>
+                
+                <div class="product-content">
+                    <h2 class="product-title">Dyson Airwrap™ : Multi-Styler et Sécheur</h2>
+                    
+                    <div class="rating-block">
+                        <span class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </span>
+                        <span>4,2</span>
+                        <span class="rating-count">(3 177 avis)</span>
+                    </div>
+
+                    <div class="sales-proof">
+                        <i class="fa-solid fa-fire" style="color:#CC0C39;"></i> Offre à forte demande ! (+100 achetés le mois dernier)
+                    </div>
+
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Coiffage par effet Coanda (sans chaleur extrême)</li>
+                        <li><i class="fa-solid fa-check"></i> Accessoires de coiffage et séchage inclus</li>
+                        <li><i class="fa-solid fa-check"></i> Puissance : 1300 Watts</li>
+                    </ul>
+
+                    <div class="price-container">
+                        <span class="price-current">299,00 €</span>
+                        <span class="price-old">399,00 €</span>
+                    </div>
+                    
+                    <a href="VOTRE_LIEN_AFFILIE_AIRWRAP" class="btn-amazon" target="_blank">
+                        Voir l'offre Dyson <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i>
+                    </a>
                 </div>
-                <span class="vat-notice">Les prix des articles vendus incluent la TVA. Retours GRATUITS.</span>
             </div>
 
-            <table class="specs-table">
-                <tr>
-                    <th>Marque</th>
-                    <td>Dyson</td>
-                </tr>
-                <tr>
-                    <th>Couleur</th>
-                    <td>Nickel Brillant / Cuivre Brillant</td>
-                </tr>
-                <tr>
-                    <th>Puissance</th>
-                    <td>1300 Watts</td>
-                </tr>
-                <tr>
-                    <th>Tension</th>
-                    <td>240 Volts</td>
-                </tr>
-                <tr>
-                    <th>Technologie</th>
-                    <td>Ionique, Effet Coanda</td>
-                </tr>
-            </table>
+            <div class="product-card">
+                <span class="badge-premium">Best Seller</span>
 
-            <div class="features-list">
-                <strong>Composants inclus :</strong>
-                <ul>
-                    <li>Barillet friseur/ondeur</li>
-                    <li>Brosse de contrôle et modelage</li>
-                    <li>Séchoir lissant multifonctionnel 2 en 1 Coanda</li>
-                </ul>
+                <div class="product-image-wrapper">
+                    <img src="https://example.com/votre-image-supersonic.jpg" alt="Dyson Supersonic" class="product-image">
+                </div>
+                
+                <div class="product-content">
+                    <h2 class="product-title">Dyson Supersonic™ : Sèche-cheveux intelligent</h2>
+                    
+                    <div class="rating-block">
+                        <span class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i>
+                        </span>
+                        <span>4,7</span>
+                        <span class="rating-count">(5 800 avis)</span>
+                    </div>
+
+                    <div class="sales-proof">
+                        <i class="fa-solid fa-truck" style="color:#2196F3;"></i> Livraison Rapide & GRATUITE
+                    </div>
+
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Contrôle intelligent de la chaleur</li>
+                        <li><i class="fa-solid fa-check"></i> Séchage ultra-rapide</li>
+                        <li><i class="fa-solid fa-check"></i> Moteur numérique V9 léger et puissant</li>
+                    </ul>
+
+                    <div class="price-container">
+                        <span class="price-current">429,00 €</span>
+                        <span class="price-old"></span>
+                    </div>
+                    
+                    <a href="VOTRE_LIEN_AFFILIE_SUPERSONIC" class="btn-amazon" target="_blank">
+                        Voir le Sèche-Cheveux <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i>
+                    </a>
+                </div>
             </div>
+
+            <div class="product-card">
+                <span class="badge-premium">Indispensable</span>
+                
+                <div class="product-image-wrapper">
+                    <img src="https://example.com/votre-image-huile.jpg" alt="Huile Kérastase" class="product-image">
+                </div>
+                
+                <div class="product-content">
+                    <h2 class="product-title">Kérastase Elixir Ultime : Huile Capillaire</h2>
+                    
+                    <div class="rating-block">
+                        <span class="stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                        </span>
+                        <span>5,0</span>
+                        <span class="rating-count">(9 000+ avis)</span>
+                    </div>
+
+                    <div class="sales-proof">
+                        <i class="fa-solid fa-box" style="color:#50C878;"></i> Produit de Soin N°1 en Europe
+                    </div>
+
+                    <ul class="features-list">
+                        <li><i class="fa-solid fa-check"></i> Brillance intense et protection anti-humidité</li>
+                        <li><i class="fa-solid fa-check"></i> Protection contre la chaleur (jusqu'à 230°C)</li>
+                        <li><i class="fa-solid fa-check"></i> Huiles précieuses : Marula, Camélia, Argan</li>
+                    </ul>
+
+                    <div class="price-container">
+                        <span class="price-current">35,50 €</span>
+                        <span class="price-old">45,00 €</span>
+                    </div>
+                    
+                    <a href="VOTRE_LIEN_AFFILIE_KERASTASE" class="btn-amazon" target="_blank">
+                        Acheter l'Huile <i class="fa-solid fa-arrow-right" style="margin-left:5px;"></i>
+                    </a>
+                </div>
+            </div>
+
             
-            <div class="features-list">
-                <strong>Caractéristique spéciale :</strong>
-                <p style="margin:0; color:#333; font-size:0.95em;">
-                    Régulation intelligente de la chaleur, Touche air froid, 3 vitesses, 6 paramètres.
-                </p>
             </div>
-
-            <a href="VOTRE_LIEN_AFFILIE_ICI" class="btn-amazon">
-                Voir l'offre sur Amazon
-            </a>
-
-            <div class="footer-legal">
-                Top Brand Dyson : 92% de notes positives.<br>
-                En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
-            </div>
-
-        </div>
     </div>
+
+    <footer class="footer">
+        &copy; 2025 Hair Glow Studio. En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.
+    </footer>
 
 </body>
 </html>
