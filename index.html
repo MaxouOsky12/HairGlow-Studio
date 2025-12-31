@@ -10,15 +10,15 @@
 
     <style>
         :root {
-            --bg-body: #fdfaf5; 
+            --bg-body: #f9f7f2; 
             --bg-card: #ffffff;
-            --text-dark: #2d241e;
-            --accent-refuge: #6d4c41; /* Brun chaleureux */
-            --gold-refuge: #d4a373; /* Doré sablé */
-            --amazon-orange: #ff9900;
+            --text-dark: #3a322d;
+            --accent-refuge: #5d4037; 
+            --gold-refuge: #c4a47c;
+            --amazon-yellow: #f0c14b;
+            --amazon-border: #a88734;
             --prime-blue: #00a8e1;
-            --color-trust: #27ae60;
-            --shadow-premium: 0 20px 40px rgba(45, 36, 30, 0.08);
+            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
         }
 
         body {
@@ -30,198 +30,285 @@
         }
 
         /* --- HEADER BRANDING --- */
-        .header {
-            background: #ffffff;
-            padding: 20px;
+        header {
+            background: white;
+            padding: 30px 20px;
             text-align: center;
             border-bottom: 1px solid #eee;
         }
         .brand-logo {
             font-family: 'Playfair Display', serif;
-            font-size: 1.8em;
+            font-size: 2.2em;
             font-weight: 900;
-            letter-spacing: -1px;
             color: var(--accent-refuge);
-            text-transform: lowercase;
+            letter-spacing: -1px;
         }
         .brand-logo span { color: var(--gold-refuge); }
 
-        .hero-banner {
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=2000&auto=format&fit=crop');
+        /* --- HERO --- */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1600&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-            height: 300px;
+            height: 350px;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
-            text-align: center;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
-        .hero-banner h1 { font-family: 'Playfair Display', serif; font-size: 3em; margin: 0; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5em; margin: 0; }
+        .hero p { font-size: 1.2em; font-weight: 400; opacity: 0.9; }
 
-        /* --- TRUST & AMAZON BAR --- */
-        .amazon-trust {
+        /* --- BARRE AMAZON --- */
+        .amazon-bar {
             background: #232f3e;
             color: white;
             padding: 12px;
             display: flex;
             justify-content: center;
-            gap: 25px;
+            gap: 30px;
             font-size: 0.85em;
             font-weight: 600;
             flex-wrap: wrap;
         }
-        .amazon-trust i { color: var(--amazon-orange); }
+        .amazon-bar i { color: #ff9900; }
 
-        /* --- GRID --- */
+        /* --- GRILLE PRODUITS --- */
         .container {
-            max-width: 1300px;
-            margin: 40px auto;
+            max-width: 1400px;
+            margin: 50px auto;
             padding: 0 20px;
         }
-        .product-grid {
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
-        /* --- PRODUCT CARD --- */
+        /* --- CARTE --- */
         .card {
             background: var(--bg-card);
-            border-radius: 15px;
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: var(--shadow-premium);
-            transition: 0.3s;
+            box-shadow: var(--shadow-soft);
+            transition: transform 0.3s ease;
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.03);
+            border: 1px solid #f0efeb;
         }
-        .card:hover { transform: translateY(-10px); }
+        .card:hover { transform: translateY(-8px); }
 
-        .img-box {
-            height: 300px;
-            overflow: hidden;
+        .image-box {
+            height: 280px;
             position: relative;
+            background: #fdfdfd;
         }
-        .img-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s; }
-        .card:hover .img-box img { transform: scale(1.1); }
-
-        /* Badge Prime */
-        .prime-badge {
+        .image-box img { width: 100%; height: 100%; object-fit: cover; }
+        
+        .prime-tag {
             position: absolute;
-            bottom: 15px;
-            left: 15px;
+            bottom: 10px;
+            left: 10px;
             background: white;
-            padding: 4px 8px;
+            padding: 3px 8px;
             border-radius: 4px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
+            font-size: 0.7em;
             font-weight: 800;
             color: var(--prime-blue);
-            font-size: 0.7em;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        .details { padding: 30px; flex-grow: 1; display: flex; flex-direction: column; }
+        .content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
         
-        .cat { text-transform: uppercase; font-size: 0.7em; letter-spacing: 2px; color: var(--gold-refuge); font-weight: 800; margin-bottom: 10px; }
+        .tag { color: var(--gold-refuge); font-size: 0.75em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         
-        .title { font-family: 'Playfair Display', serif; font-size: 1.6em; margin: 0 0 15px 0; line-height: 1.2; }
+        .title { font-family: 'Playfair Display', serif; font-size: 1.5em; margin: 0 0 10px 0; color: #1a1a1a; line-height: 1.3; }
 
-        .amazon-rating { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
-        .stars { color: #febd69; font-size: 0.9em; }
-        .count { font-size: 0.8em; color: #777; }
+        .rating { color: #febd69; font-size: 0.85em; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
+        .rating span { color: #777; font-weight: 400; }
 
-        .price-box {
+        .price-section {
             margin-top: auto;
-            padding-top: 20px;
-            border-top: 1px dashed #ddd;
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            align-items: baseline;
+            gap: 10px;
             margin-bottom: 20px;
         }
-        .price { font-size: 2em; font-weight: 800; }
-        .save { background: #e7f6ed; color: var(--color-trust); padding: 5px 10px; border-radius: 5px; font-weight: 700; font-size: 0.8em; }
+        .price { font-size: 1.8em; font-weight: 800; color: #111; }
+        .old-price { text-decoration: line-through; color: #888; font-size: 0.9em; }
 
-        /* CTA AMAZON */
+        /* BOUTON AMAZON */
         .btn-amazon {
             background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
-            border: 1px solid #a88734;
+            border: 1px solid var(--amazon-border);
             color: #111;
-            padding: 15px;
+            padding: 14px;
+            border-radius: 8px;
             text-align: center;
             text-decoration: none;
-            border-radius: 8px;
             font-weight: 700;
+            font-size: 0.9em;
+            transition: 0.2s;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
-            transition: 0.2s;
+            gap: 8px;
         }
         .btn-amazon:hover { background: linear-gradient(to bottom, #f5d78e, #eeb933); }
 
         footer {
-            background: #2d241e;
-            color: #d4a373;
-            padding: 60px 20px;
+            background: #3a322d;
+            color: #f9f7f2;
+            padding: 50px 20px;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
 
-    <header class="header">
+    <header>
         <div class="brand-logo">le refuge<span>.</span>du style intérieur</div>
     </header>
 
-    <div class="hero-banner">
-        <h1>Votre Refuge, Votre Style</h1>
-        <p>Les plus belles pièces Amazon Home sélectionnées pour vous.</p>
+    <div class="hero">
+        <h1>L'Art de se Sentir Chez Soi</h1>
+        <p>Sélection exclusive d'objets et mobiliers pour un refuge unique.</p>
     </div>
 
-    <div class="amazon-trust">
-        <div class="item"><i class="fa-brands fa-amazon"></i> Prix garantis Amazon</div>
-        <div class="item"><i class="fa-solid fa-shield-check"></i> Paiement 100% sécurisé</div>
-        <div class="item"><i class="fa-solid fa-rotate-left"></i> Retours simplifiés</div>
+    <div class="amazon-bar">
+        <span><i class="fa-brands fa-amazon"></i> Partenaire Amazon Affilié</span>
+        <span><i class="fa-solid fa-truck"></i> Livraison Gratuite avec Prime</span>
+        <span><i class="fa-solid fa-lock"></i> Paiement Sécurisé</span>
     </div>
 
     <div class="container">
-        <div class="product-grid">
+        <div class="grid">
 
             <div class="card">
-                <div class="img-box">
-                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=800" alt="Canapé">
-                    <div class="prime-badge"><i class="fa-solid fa-check"></i> prime</div>
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=600" alt="Canapé">
+                    <div class="prime-tag">✓ prime</div>
                 </div>
-                <div class="details">
-                    <div class="cat">Salon • Prestige</div>
-                    <h2 class="title">Canapé Velours Côtelé Oxford</h2>
-                    <div class="amazon-rating">
-                        <div class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
-                        <span class="count">(482 avis vérifiés)</span>
+                <div class="content">
+                    <div class="tag">Salon • Best Seller</div>
+                    <h2 class="title">Canapé Oxford Velours Émeraude</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span>(1 240)</span></div>
+                    <div class="price-section">
+                        <span class="price">899,00€</span>
+                        <span class="old-price">1 150€</span>
                     </div>
-                    <div class="price-box">
-                        <div class="price">799€</div>
-                        <div class="save">-15% Coupon</div>
-                    </div>
-                    <a href="TON_LIEN_AMAZON" class="btn-amazon" target="_blank">
-                        Vérifier le prix sur Amazon <i class="fa-brands fa-amazon"></i>
-                    </a>
+                    <a href="TON_LIEN_AMAZON" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=600" alt="Fauteuil">
+                    <div class="prime-tag">✓ prime</div>
+                </div>
+                <div class="content">
+                    <div class="tag">Détente • Design</div>
+                    <h2 class="title">Fauteuil Lounge Century en Cuir</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span>(85)</span></div>
+                    <div class="price-section">
+                        <span class="price">649,00€</span>
+                    </div>
+                    <a href="TON_LIEN_AMAZON" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                </div>
             </div>
+
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?q=80&w=600" alt="Table basse">
+                </div>
+                <div class="content">
+                    <div class="tag">Mobilier • Chic</div>
+                    <h2 class="title">Table Gigogne Marbre Blanc</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span>(42)</span></div>
+                    <div class="price-section">
+                        <span class="price">249,50€</span>
+                        <span class="old-price">310€</span>
+                    </div>
+                    <a href="TON_LIEN_AMAZON" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1513506003011-3b03c80165bd?q=80&w=600" alt="Luminaire">
+                    <div class="prime-tag">✓ prime</div>
+                </div>
+                <div class="content">
+                    <div class="tag">Éclairage • Ambiance</div>
+                    <h2 class="title">Lampadaire Arqué "Luce" Or Rose</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span>(512)</span></div>
+                    <div class="price-section">
+                        <span class="price">158,00€</span>
+                    </div>
+                    <a href="TON_LIEN_AMAZON" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1595428774223-ef52624120d2?q=80&w=600" alt="Buffet">
+                </div>
+                <div class="content">
+                    <div class="tag">Rangement • Bois</div>
+                    <h2 class="title">Buffet Herringbone Chêne Massif</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span>(19)</span></div>
+                    <div class="price-section">
+                        <span class="price">549,99€</span>
+                        <span class="old-price">650€</span>
+                    </div>
+                    <a href="TON_LIEN_AMAZON" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1505693416388-b0346efee535?q=80&w=600" alt="Lit">
+                    <div class="prime-tag">✓ prime</div>
+                </div>
+                <div class="content">
+                    <div class="tag">Chambre • Confort</div>
+                    <h2 class="title">Lit Coffre Capitonné Gris Anthracite</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i> <span>(310)</span></div>
+                    <div class="price-section">
+                        <span class="price">429,00€</span>
+                    </div>
+                    <a href="TON_LIEN_AMAZON" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="image-box">
+                    <img src="https://images.unsplash.com/photo-1604578762246-41134e37f9cc?q=80&w=600" alt="Table">
+                </div>
+                <div class="content">
+                    <div class="tag">Cuisine • Convivialité</div>
+                    <h2 class="title">Table de Repas Industrielle Acacia</h2>
+                    <div class="rating"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-regular fa-star"></i> <span>(204)</span></div>
+                    <div class="price-section">
+                        <span class="price">699,00€</span>
+                        <span class="old-price">799€</span>
+                    </div>
+                    <a href="TON_LIEN_AMAZON" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                </div>
+            </div>
+
+        </div>
     </div>
 
     <footer>
-        <div class="brand-logo" style="color: white; margin-bottom: 20px;">le refuge<span>.</span>style</div>
-        <p>En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises.</p>
-        <p style="font-size: 0.8em; opacity: 0.6; margin-top: 20px;">© 2025 Le Refuge du Style Intérieur - Tous droits réservés.</p>
+        <p><strong>le refuge.du style intérieur</strong></p>
+        <p style="font-size: 0.8em; max-width: 600px; margin: 20px auto; opacity: 0.8;">
+            En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises. Les liens présents sur cette page sont des liens d'affiliation.
+        </p>
+        <p style="font-size: 0.7em; opacity: 0.5;">© 2025 Tous droits réservés.</p>
     </footer>
 
 </body>
