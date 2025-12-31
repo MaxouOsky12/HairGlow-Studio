@@ -3,30 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sélection Dyson Prestige</title>
+    <title>Sélection Intérieur Prestige</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Manrope:wght@500;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <style>
         :root {
-            /* Couleurs plus denses */
-            --bg-body: #eef1f5; /* Gris bleuté très clair pour la densité */
+            /* Couleurs Ambiance Maison/Déco */
+            --bg-body: #fdfbf7; /* Un blanc cassé plus chaleureux (Cream) */
             --bg-card: #ffffff;
-            --text-dark: #111111;
-            --text-grey: #555555;
+            --text-dark: #2c2c2c;
+            --text-grey: #666666;
             
-            /* L'Or Dyson */
-            --gold-main: #b48d56;
-            --gold-light: #d4af37;
-            --gold-gradient: linear-gradient(135deg, #b48d56 0%, #d4af37 100%);
+            /* Accents "Luxe Intérieur" */
+            --accent-main: #8d6e63; /* Brun bois/Taupe chic */
+            --accent-gold: #c5a059; /* Or brossé */
+            --accent-gradient: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%); /* Exemple gradient ou garder l'or */
+            --gold-gradient: linear-gradient(135deg, #8d6e63 0%, #bcaaa4 100%); /* Bois noble */
             
-            /* Rouge Promo Profond */
-            --red-promo: #be1e2d;
+            /* Couleur Promo "Terracotta" (plus déco que le rouge vif) */
+            --color-promo: #cd5c5c; 
 
-            /* Ombres "lourdes" pour donner du corps */
-            --shadow-card: 0 10px 30px rgba(0,0,0,0.08);
-            --shadow-hover: 0 20px 40px rgba(0,0,0,0.15);
+            /* Ombres douces pour le mobilier */
+            --shadow-card: 0 15px 35px rgba(0,0,0,0.06);
+            --shadow-hover: 0 25px 50px rgba(0,0,0,0.12);
         }
 
         body {
@@ -40,32 +41,37 @@
             min-height: 100vh;
         }
 
-        /* --- HEADER MASSIF --- */
+        /* --- HEADER ELEGANT --- */
         .hero-section {
-            background-color: #1a1a1a; /* Fond sombre pour le contraste */
+            background-color: #1a1a1a; 
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000&auto=format&fit=crop'); /* Image de fond salon sombre */
+            background-size: cover;
+            background-position: center;
             color: white;
-            padding: 60px 20px;
+            padding: 80px 20px 100px 20px; /* Plus d'espace en bas */
             text-align: center;
-            border-bottom: 5px solid var(--gold-main); /* Bordure épaisse */
-            margin-bottom: -40px; /* Chevauchement avec les cartes */
+            border-bottom: 8px solid var(--accent-main);
+            margin-bottom: -60px; /* Chevauchement accru */
             z-index: 1;
         }
 
         .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 3.5em; /* Très gros titre */
+            font-size: 3.8em;
             font-weight: 900;
             margin: 0;
-            letter-spacing: -1px;
-            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #fff;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
         }
 
         .hero-subtitle {
             font-family: 'Playfair Display', serif;
-            font-size: 1.4em;
+            font-size: 1.5em;
             color: #ddd;
-            margin-top: 10px;
+            margin-top: 15px;
             font-style: italic;
+            font-weight: 400;
         }
 
         /* --- CONTENEUR --- */
@@ -81,108 +87,109 @@
         /* --- GRILLE --- */
         .product-list {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); /* Cartes plus larges */
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 35px;
             padding-top: 20px;
         }
 
-        /* --- CARTE ROBUSTE --- */
+        /* --- CARTE MEUBLE --- */
         .product-card {
             background: var(--bg-card);
-            border-radius: 12px;
+            border-radius: 8px; /* Coins un peu plus carrés pour le mobilier */
             box-shadow: var(--shadow-card);
             overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
             position: relative;
-            /* Bordure épaisse en haut */
-            border-top: 6px solid var(--gold-main); 
+            border-top: 5px solid var(--accent-gold); 
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
         }
 
-        /* Image */
+        /* Image Spacieuse */
         .image-container {
-            background-color: #fff;
-            height: 320px; /* Image plus haute */
+            background-color: #f4f4f4;
+            height: 350px; /* Plus haut pour bien voir les meubles */
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 20px;
-            border-bottom: 1px solid #eee;
+            overflow: hidden;
         }
 
         .image-container img {
-            max-width: 90%;
-            max-height: 90%;
-            object-fit: contain;
-            filter: drop-shadow(0 10px 10px rgba(0,0,0,0.1)); /* Ombre sur l'objet lui-même */
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Remplit tout l'espace (lifestyle) */
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .image-container img {
+            transform: scale(1.05); /* Zoom doux au survol */
         }
 
-        /* Badges Carrés et Solides */
+        /* Badges */
         .badge {
             position: absolute;
-            top: 15px;
-            padding: 8px 15px;
-            font-weight: 800;
-            font-size: 0.85em;
+            top: 20px;
+            padding: 8px 16px;
+            font-weight: 700;
+            font-size: 0.8em;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            z-index: 10;
         }
 
         .badge-left {
             left: 0;
-            background: var(--red-promo);
+            background: var(--color-promo);
             color: white;
             border-top-right-radius: 4px;
             border-bottom-right-radius: 4px;
         }
 
         .badge-right {
-            right: 15px;
-            background: #111;
-            color: var(--gold-light);
+            right: 20px;
+            background: rgba(255, 255, 255, 0.95);
+            color: #111;
             border-radius: 4px;
-            border: 1px solid var(--gold-light);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
 
         /* Contenu */
         .card-details {
-            padding: 30px;
+            padding: 35px;
         }
 
         .product-name {
             font-family: 'Playfair Display', serif;
-            font-size: 1.6em;
-            font-weight: 800;
-            line-height: 1.2;
+            font-size: 1.7em;
+            font-weight: 700;
+            line-height: 1.3;
             margin: 0 0 15px 0;
-            color: #000;
+            color: #1a1a1a;
         }
 
-        /* Bloc Prix Massif */
+        /* Bloc Prix Déco */
         .price-wrapper {
-            background: #f8f8f8;
-            padding: 15px;
-            border-radius: 8px;
-            margin: 20px 0;
+            background: #fff;
+            padding: 10px 0;
+            margin: 25px 0;
             display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-left: 4px solid var(--red-promo);
+            align-items: baseline;
+            gap: 15px;
+            border-bottom: 1px solid #eee;
         }
 
         .price-now {
-            font-size: 2em;
+            font-size: 2.2em;
             font-weight: 800;
-            color: var(--red-promo);
+            color: var(--accent-main);
         }
 
         .price-was {
-            font-size: 1.1em;
+            font-size: 1.2em;
             text-decoration: line-through;
             color: #999;
         }
@@ -192,185 +199,181 @@
             list-style: none;
             padding: 0;
             margin: 20px 0;
-            font-size: 1em;
-            color: #444;
+            font-size: 0.95em;
+            color: #555;
         }
 
         .specs-list li {
-            margin-bottom: 10px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
-            font-weight: 600; /* Texte plus gras */
         }
 
         .specs-list i {
-            color: var(--gold-main);
-            margin-right: 12px;
-            font-size: 1.1em;
-            background: #fff8e1;
-            padding: 5px;
-            border-radius: 50%;
+            color: var(--accent-gold);
+            margin-right: 15px;
+            font-size: 1em;
+            width: 20px;
+            text-align: center;
         }
 
         /* Preuve sociale */
         .social-proof {
             display: flex;
             align-items: center;
-            gap: 10px;
-            margin-bottom: 15px;
-            font-weight: 700;
-            font-size: 0.9em;
-            color: #2e7d32;
+            gap: 8px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            font-size: 0.85em;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+        
+        .stars { color: #f1c40f; }
 
-        /* BOUTON D'ACTION (Gros et Gras) */
+        /* BOUTON ACTION */
         .btn-buy {
             display: block;
             width: 100%;
-            padding: 18px 0;
-            background: var(--gold-gradient);
+            padding: 16px 0;
+            background: #2c2c2c; /* Noir mat élégant */
             color: white;
             text-align: center;
             text-decoration: none;
-            font-weight: 800;
-            font-size: 1.1em;
+            font-weight: 700;
+            font-size: 1em;
             text-transform: uppercase;
-            border-radius: 8px;
-            letter-spacing: 1px;
+            border-radius: 4px;
+            letter-spacing: 1.5px;
             transition: all 0.3s;
-            box-shadow: 0 4px 15px rgba(180, 141, 86, 0.4);
-            text-shadow: 0 1px 2px rgba(0,0,0,0.2);
         }
 
         .btn-buy:hover {
-            filter: brightness(1.1);
+            background: var(--accent-main); /* Devient marron/taupe au survol */
             transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(180, 141, 86, 0.6);
         }
 
         /* Footer */
         .footer {
             text-align: center;
-            padding: 40px;
-            background: #1a1a1a;
-            color: #888;
+            padding: 50px;
+            background: #f4f4f4;
+            color: #777;
             font-size: 0.9em;
-            border-top: 5px solid var(--gold-main);
+            margin-top: auto;
         }
 
         @media (max-width: 600px) {
-            .hero-title { font-size: 2.2em; }
-            .price-now { font-size: 1.6em; }
+            .hero-title { font-size: 2.5em; }
+            .image-container { height: 250px; }
         }
     </style>
 </head>
 <body>
 
     <div class="hero-section">
-        <h1 class="hero-title">Dyson & Co.</h1>
-        <p class="hero-subtitle">L'Excellence du Coiffage Professionnel.</p>
+        <h1 class="hero-title">Maison & Prestige</h1>
+        <p class="hero-subtitle">L'élégance intemporelle pour votre intérieur.</p>
     </div>
 
     <div class="container">
         <div class="product-list">
 
             <div class="product-card">
-                <span class="badge badge-left">-25% OFFRE LIMITÉE</span>
-                <span class="badge badge-right">BEST SELLER</span>
+                <span class="badge badge-left">-20% VENTE FLASH</span>
+                <span class="badge badge-right">COUP DE CŒUR</span>
                 
                 <div class="image-container">
-                    <img src="https://m.media-amazon.com/images/I/41BdWDiIOXL._AC_SL1011_.jpg" alt="Dyson Airwrap">
+                    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?q=80&w=1000&auto=format&fit=crop" alt="Canapé Chesterfield Vert">
                 </div>
 
                 <div class="card-details">
-                    <h2 class="product-name">Dyson Airwrap™ Complete Long</h2>
-                    
                     <div class="social-proof">
-                        <i class="fa-solid fa-users"></i> 3 177 clients satisfaits
+                        <span class="stars"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></span>
+                        (142 avis)
                     </div>
 
+                    <h2 class="product-name">Canapé Oxford Velours Vert</h2>
+                    
                     <ul class="specs-list">
-                        <li><i class="fa-solid fa-wind"></i> Boucles Coanda automatiques</li>
-                        <li><i class="fa-solid fa-shield-halved"></i> Sans chaleur extrême</li>
-                        <li><i class="fa-solid fa-wand-magic-sparkles"></i> 6 embouts inclus</li>
+                        <li><i class="fa-solid fa-couch"></i> Confort Premium Haute Densité</li>
+                        <li><i class="fa-solid fa-gem"></i> Velours Italien déperlant</li>
+                        <li><i class="fa-solid fa-ruler-combined"></i> Largeur : 220cm (3 places)</li>
+                        <li><i class="fa-solid fa-truck-fast"></i> Livraison gratuite sous 7j</li>
                     </ul>
 
                     <div class="price-wrapper">
-                        <div>
-                            <span class="price-was">449€</span>
-                            <div style="font-size:0.8em; color:#555;">Prix Conseillé</div>
-                        </div>
-                        <span class="price-now">349€</span>
+                        <span class="price-now">899€</span>
+                        <span class="price-was">1150€</span>
                     </div>
 
-                    <a href="https://amzn.to/487nw7C" class="btn-buy" target="_blank">
-                        Voir l'offre <i class="fa-solid fa-arrow-right"></i>
+                    <a href="#" class="btn-buy" target="_blank">
+                        Voir la configuration <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
             <div class="product-card">
-                <span class="badge badge-right" style="background:#fff; color:#111; border-color:#111;">ÉDITION PRO</span>
+                <span class="badge badge-right" style="border:1px solid #000;">ICONIQUE</span>
                 
                 <div class="image-container">
-                    <img src="https://m.media-amazon.com/images/I/61XvcXMdy9L._AC_SL1500_.jpg" alt="Dyson Supersonic">
+                    <img src="https://images.unsplash.com/photo-1567538096630-e0c55bd6374c?q=80&w=1000&auto=format&fit=crop" alt="Fauteuil Design Bois">
                 </div>
 
                 <div class="card-details">
-                    <h2 class="product-name">Dyson Supersonic™ Professional</h2>
-                    
-                    <div class="social-proof" style="color:#d4af37;">
-                        <i class="fa-solid fa-crown"></i> Le choix des coiffeurs
+                    <div class="social-proof" style="color:var(--accent-main);">
+                        <i class="fa-solid fa-award"></i> Choix des Architectes
                     </div>
 
+                    <h2 class="product-name">Fauteuil Lounge "Century"</h2>
+                    
                     <ul class="specs-list">
-                        <li><i class="fa-solid fa-bolt"></i> Moteur V9 (110 000 tr/min)</li>
-                        <li><i class="fa-solid fa-temperature-arrow-up"></i> Contrôle intelligent</li>
-                        <li><i class="fa-solid fa-magnet"></i> Embouts magnétiques</li>
+                        <li><i class="fa-solid fa-tree"></i> Structure en Noyer Massif</li>
+                        <li><i class="fa-solid fa-fingerprint"></i> Cuir pleine fleur véritable</li>
+                        <li><i class="fa-solid fa-palette"></i> Design Ergonomique 15°</li>
+                        <li><i class="fa-solid fa-screwdriver-wrench"></i> Livré monté</li>
                     </ul>
 
                     <div class="price-wrapper">
-                        <div style="font-weight:bold; color:#333;">INVESTISSEMENT</div>
-                        <span class="price-now" style="color:#111;">649€</span>
+                        <span class="price-now">649€</span>
+                        <div style="font-size:0.8em; color:#777; margin-left:auto;">Stock Limité</div>
                     </div>
 
-                    <a href="https://amzn.to/3Kf7fEz" class="btn-buy" target="_blank" style="background:#111; color:white;">
-                        Commander le Pro <i class="fa-solid fa-arrow-right"></i>
+                    <a href="#" class="btn-buy" target="_blank">
+                        Commander la pièce <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
 
             <div class="product-card">
-                <span class="badge badge-left">-30% RÉDUCTION</span>
-                <span class="badge badge-right" style="background:var(--red-promo); color:white; border:none;">NOUVEAU</span>
+                <span class="badge badge-left" style="background:#2c3e50;">NOUVEAUTÉ</span>
                 
                 <div class="image-container">
-                    <img src="https://m.media-amazon.com/images/I/51HZ124ECML._AC_SL1500_.jpg" alt="Dyson Airstrait">
+                    <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?q=80&w=1000&auto=format&fit=crop" alt="Table basse marbre">
                 </div>
 
                 <div class="card-details">
-                    <h2 class="product-name">Dyson Airstrait™ Lisseur Séchant</h2>
-                    
                     <div class="social-proof">
-                        <i class="fa-solid fa-fire"></i> +200 ventes cette semaine
+                        <i class="fa-solid fa-fire"></i> Tendance du mois
                     </div>
 
+                    <h2 class="product-name">Table Gigogne Marbre & Or</h2>
+                    
                     <ul class="specs-list">
-                        <li><i class="fa-solid fa-droplet"></i> Du mouillé au sec</li>
-                        <li><i class="fa-solid fa-ban"></i> Aucune plaque chauffante</li>
-                        <li><i class="fa-solid fa-leaf"></i> Brillance naturelle</li>
+                        <li><i class="fa-regular fa-circle"></i> Set de 2 tables modulables</li>
+                        <li><i class="fa-solid fa-mountain"></i> Plateau effet Marbre Carrara</li>
+                        <li><i class="fa-solid fa-shield-cat"></i> Finition anti-rayures</li>
+                        <li><i class="fa-solid fa-box-open"></i> Montage facile (5 min)</li>
                     </ul>
 
                     <div class="price-wrapper">
-                        <div>
-                            <span class="price-was">499€</span>
-                            <div style="font-size:0.8em; color:#555;">Prix Conseillé</div>
-                        </div>
-                        <span class="price-now">349€</span>
+                        <span class="price-now">249€</span>
+                        <span class="price-was">320€</span>
                     </div>
 
-                    <a href="https://amzn.to/48ICfGb" class="btn-buy" target="_blank">
-                        Profiter du Deal <i class="fa-solid fa-arrow-right"></i>
+                    <a href="#" class="btn-buy" target="_blank">
+                        Profiter de l'offre <i class="fa-solid fa-arrow-right"></i>
                     </a>
                 </div>
             </div>
@@ -379,7 +382,8 @@
     </div>
 
     <footer class="footer">
-        <p>&copy; 2025 Hair Glow Studio. Partenaire Amazon Certifié.</p>
+        <p>&copy; 2025 Maison & Prestige. Sélection par nos décorateurs d'intérieur.</p>
+        <p style="font-size:0.8em; margin-top:10px;">En tant que Partenaire Amazon, nous réalisons un bénéfice sur les achats remplissant les conditions requises.</p>
     </footer>
 
 </body>
