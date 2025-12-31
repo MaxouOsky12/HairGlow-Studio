@@ -57,6 +57,8 @@
             align-items: center;
             color: white;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-align: center;
+            padding: 0 20px;
         }
         .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5em; margin: 0; }
         .hero p { font-size: 1.2em; font-weight: 400; opacity: 0.9; }
@@ -101,33 +103,28 @@
         .card:hover { transform: translateY(-8px); }
 
         .image-box {
-            height: 280px;
+            height: 320px; /* Hauteur fixe pour l'alignement */
             position: relative;
-            background: #fdfdfd;
+            background: #fff;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .image-box img { width: 100%; height: 100%; object-fit: cover; }
-        
-        .prime-tag {
-            position: absolute;
-            bottom: 10px;
-            left: 10px;
-            background: white;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-size: 0.7em;
-            font-weight: 800;
-            color: var(--prime-blue);
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        .image-box img { 
+            width: 100%; 
+            height: 100%; 
+            object-fit: contain; /* Évite de couper les produits Amazon */
+            padding: 15px;
+            transition: transform 0.4s ease;
         }
+        .card:hover .image-box img { transform: scale(1.05); }
 
         .content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
         
         .tag { color: var(--gold-refuge); font-size: 0.75em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
         
-        .title { font-family: 'Playfair Display', serif; font-size: 1.5em; margin: 0 0 10px 0; color: #1a1a1a; line-height: 1.3; }
-
-        .rating { color: #febd69; font-size: 0.85em; margin-bottom: 15px; display: flex; align-items: center; gap: 5px; }
-        .rating span { color: #777; font-weight: 400; }
+        .title { font-family: 'Playfair Display', serif; font-size: 1.4em; margin: 0 0 10px 0; color: #1a1a1a; line-height: 1.2; height: 2.4em; overflow: hidden; }
 
         .price-section {
             margin-top: auto;
@@ -156,7 +153,7 @@
             justify-content: center;
             gap: 8px;
         }
-        .btn-amazon:hover { background: linear-gradient(to bottom, #f5d78e, #eeb933); }
+        .btn-amazon:hover { background: linear-gradient(to bottom, #f5d78e, #eeb933); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
 
         footer {
             background: #3a322d;
@@ -180,7 +177,7 @@
 
     <div class="amazon-bar">
         <span><i class="fa-brands fa-amazon"></i> Partenaire Amazon Affilié</span>
-        <span><i class="fa-solid fa-truck"></i> Livraison Gratuite avec Prime</span>
+        <span><i class="fa-solid fa-truck"></i> Livraison Rapide Prime</span>
         <span><i class="fa-solid fa-lock"></i> Paiement Sécurisé</span>
     </div>
 
@@ -189,7 +186,7 @@
 
             <div class="card">
                 <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81+or4Ac2NL._AC_SL1500_.jpg" alt="Canapé">
+                    <img src="https://m.media-amazon.com/images/I/81+or4Ac2NL._AC_SL1500_.jpg" alt="Canapé Galway">
                 </div>
                 <div class="content">
                     <div class="tag">Salon • Harmonieux</div>
@@ -198,13 +195,13 @@
                         <span class="price">549,90€</span>
                         <span class="old-price">599,90€</span>
                     </div>
-                    <a href="https://amzn.to/4aHFoaM" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                    <a href="https://amzn.to/4aHFoaM" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81t5jMHvtsL._AC_SL1500_.jpg" alt="Canapé">
+                    <img src="https://m.media-amazon.com/images/I/81t5jMHvtsL._AC_SL1500_.jpg" alt="Canapé Meluti">
                 </div>
                 <div class="content">
                     <div class="tag">Détente • Design</div>
@@ -212,27 +209,27 @@
                     <div class="price-section">
                         <span class="price">899,99€</span>
                     </div>
-                    <a href="https://amzn.to/3KLQv89" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                    <a href="https://amzn.to/3KLQv89" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81yBaaXlGFL._AC_SL1500_.jpg" alt="Meuble">
+                    <img src="https://m.media-amazon.com/images/I/81yBaaXlGFL._AC_SL1500_.jpg" alt="Buffet Lluvia">
                 </div>
                 <div class="content">
                     <div class="tag">Mobilier • Chic</div>
-                    <h2 class="title">Buffet Lluvia à 3 Portes</h2>
+                    <h2 class="title">Buffet Lluvia à 3 Portes Premium</h2>
                     <div class="price-section">
                         <span class="price">185,99€</span>
                     </div>
-                    <a href="https://amzn.to/4rXgkmt" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                    <a href="https://amzn.to/4rXgkmt" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/812TgOFGQOL._AC_SL1500_.jpg">
+                    <img src="https://m.media-amazon.com/images/I/812TgOFGQOL._AC_SL1500_.jpg" alt="Lit Complet">
                 </div>
                 <div class="content">
                     <div class="tag">Chambre • Ambiance</div>
@@ -240,27 +237,27 @@
                     <div class="price-section">
                         <span class="price">474,97€</span>
                     </div>
-                    <a href="https://amzn.to/44xS40d" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                    <a href="https://amzn.to/44xS40d" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/71JpmLuq76L._AC_SL1500_.jpg" alt="Meuble Salle de Bain">
+                    <img src="https://m.media-amazon.com/images/I/71JpmLuq76L._AC_SL1500_.jpg" alt="Meuble Rimini">
                 </div>
                 <div class="content">
-                    <div class="tag">Rangement • Tirroir</div>
-                    <h2 class="title">Badplaats Meuble sous-lavabo Rimini</h2>
+                    <div class="tag">Rangement • Bain</div>
+                    <h2 class="title">Meuble sous-lavabo Rimini Design</h2>
                     <div class="price-section">
                         <span class="price">219,00€</span>
                     </div>
-                    <a href="https://amzn.to/4qge7Rn" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                    <a href="https://amzn.to/4qge7Rn" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81nuyjFH+WL._AC_SL1500_.jpg" alt="Cuisine">
+                    <img src="https://m.media-amazon.com/images/I/81nuyjFH+WL._AC_SL1500_.jpg" alt="Table à manger">
                 </div>
                 <div class="content">
                     <div class="tag">Cuisine • Convivialité</div>
@@ -268,21 +265,21 @@
                     <div class="price-section">
                         <span class="price">269,99€</span>
                     </div>
-                    <a href="https://amzn.to/4snPzI6" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                    <a href="https://amzn.to/4snPzI6" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
             <div class="card">
                 <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/712gLX2g7yL._AC_SL1500_.jpg" alt="Vases">
+                    <img src="https://m.media-amazon.com/images/I/712gLX2g7yL._AC_SL1500_.jpg" alt="Vases Céramique">
                 </div>
                 <div class="content">
                     <div class="tag">Décoration • Style</div>
-                    <h2 class="title">Lot de 2 vases en céramique Blanche </h2>
+                    <h2 class="title">Duo de Vases en Céramique Blanche</h2>
                     <div class="price-section">
                         <span class="price">19,99€</span>
                     </div>
-                    <a href="https://amzn.to/3YbQldi" class="btn-amazon">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
+                    <a href="https://amzn.to/3YbQldi" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
                 </div>
             </div>
 
@@ -291,7 +288,7 @@
 
     <footer>
         <p><strong>le refuge.du style intérieur</strong></p>
-        <p style="font-size: 0.8em; max-width: 600px; margin: 20px auto; opacity: 0.8;">
+        <p style="font-size: 0.8em; max-width: 600px; margin: 20px auto; opacity: 0.8; padding: 0 15px;">
             En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises. Les liens présents sur cette page sont des liens d'affiliation.
         </p>
         <p style="font-size: 0.7em; opacity: 0.5;">© 2025 Tous droits réservés.</p>
