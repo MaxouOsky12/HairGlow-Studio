@@ -6,12 +6,8 @@
 <title>Thom Monteur — Video Editing</title>
 
 <style>
-/* ======================
-   CORE STYLE
-====================== */
 :root{
   --bg:#0b0b0d;
-  --bg-soft:#121214;
   --card:#17171b;
   --line:#26262c;
   --text:#ffffff;
@@ -19,11 +15,7 @@
   --accent:#0a84ff;
 }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+*{margin:0;padding:0;box-sizing:border-box;}
 
 body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;
@@ -32,76 +24,57 @@ body{
   line-height:1.4;
 }
 
-/* ======================
-   GLOBAL LAYOUT
-====================== */
 .container{
   max-width:1100px;
   margin:0 auto;
   padding:0 24px;
 }
 
-section{
-  padding:96px 0;
-}
+section{padding:96px 0;}
 
-/* ======================
-   HEADER
-====================== */
+/* HEADER */
 header{
   position:fixed;
   top:0;
   width:100%;
   backdrop-filter:blur(14px);
-  background:rgba(11,11,13,0.75);
+  background:rgba(11,11,13,.75);
   border-bottom:1px solid var(--line);
   z-index:1000;
 }
-
 .header-inner{
   height:72px;
   display:flex;
-  align-items:center;
   justify-content:space-between;
+  align-items:center;
 }
-
 nav a{
   margin-left:28px;
   font-size:14px;
   color:var(--muted);
 }
+nav a:hover{color:var(--text);}
 
-nav a:hover{
-  color:var(--text);
-}
-
-/* ======================
-   HERO
-====================== */
+/* HERO */
 .hero{
   min-height:100vh;
   display:flex;
   align-items:center;
 }
-
 .hero-content{
   text-align:center;
   max-width:760px;
-  margin:0 auto;
+  margin:auto;
 }
-
 .hero h1{
   font-size:64px;
   letter-spacing:-1.8px;
-  font-weight:700;
 }
-
 .hero p{
   margin-top:20px;
   font-size:20px;
   color:var(--muted);
 }
-
 .btn{
   margin-top:36px;
   padding:14px 34px;
@@ -109,34 +82,24 @@ nav a:hover{
   background:var(--accent);
   color:white;
   font-size:15px;
-  font-weight:500;
   display:inline-block;
-  transition:0.25s;
+  transition:.25s;
 }
+.btn:hover{transform:translateY(-1px);}
 
-.btn:hover{
-  transform:translateY(-1px);
-}
-
-/* ======================
-   TITLES
-====================== */
+/* TITLES */
 .section-title{
   text-align:center;
   font-size:40px;
-  letter-spacing:-1px;
   margin-bottom:56px;
 }
 
-/* ======================
-   SERVICES
-====================== */
+/* SERVICES */
 .services{
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:28px;
 }
-
 .service{
   background:var(--card);
   border:1px solid var(--line);
@@ -145,122 +108,104 @@ nav a:hover{
   text-align:center;
 }
 
-.service h3{
-  font-size:18px;
-  margin-bottom:8px;
-}
-
-.service p{
-  font-size:14px;
-  color:var(--muted);
-}
-
-/* ======================
-   PROJECTS
-====================== */
+/* PROJECTS */
 .projects{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:20px;
+  gap:24px;
 }
-
 .project{
-  height:180px;
+  position:relative;
+  height:200px;
   border-radius:18px;
-  background:linear-gradient(135deg,#1f1f24,#141418);
+  overflow:hidden;
+  cursor:pointer;
+  background:#111;
+  transition:.3s;
+}
+.project img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:.4s;
+}
+.project::after{
+  content:"▶";
+  position:absolute;
+  inset:0;
   display:flex;
   align-items:center;
   justify-content:center;
-  color:var(--muted);
-  font-size:14px;
+  font-size:48px;
+  color:white;
+  opacity:0;
+  background:rgba(0,0,0,.35);
+  transition:.3s;
+}
+.project:hover img{transform:scale(1.05);}
+.project:hover::after{opacity:1;}
+
+/* LIGHTBOX */
+.lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+.lightbox.active{display:flex;}
+.lightbox-content{
+  width:90%;
+  max-width:900px;
+  aspect-ratio:16/9;
+}
+.lightbox iframe,
+.lightbox video{
+  width:100%;
+  height:100%;
+  border-radius:12px;
 }
 
-/* ======================
-   PRICING
-====================== */
+/* PRICING */
 .pricing-wrap{
   max-width:900px;
-  margin:0 auto;
+  margin:auto;
   background:var(--card);
   border:1px solid var(--line);
   border-radius:22px;
   overflow:hidden;
 }
-
 table{
   width:100%;
   border-collapse:collapse;
   font-size:14px;
 }
-
-thead{
-  background:#1e1e23;
+th,td{
+  padding:16px 18px;
+  border-top:1px solid var(--line);
 }
-
 th{
-  padding:14px 18px;
+  background:#1e1e23;
   font-size:11px;
   text-transform:uppercase;
-  letter-spacing:0.08em;
   color:var(--muted);
   text-align:left;
 }
+td:last-child{color:var(--accent);}
 
-td{
-  padding:16px 18px;
-  border-top:1px solid var(--line);
-  line-height:1.35;
-}
-
-td:first-child{
-  font-weight:500;
-}
-
-td:last-child{
-  color:var(--accent);
-  font-weight:500;
-}
-
-.pricing-cta{
-  text-align:center;
-  margin-top:32px;
-}
-
-/* ======================
-   CONTACT
-====================== */
-.contact{
-  text-align:center;
-  max-width:600px;
-  margin:0 auto;
-}
-
-.contact p{
-  color:var(--muted);
-  margin:18px 0 28px;
-}
-
-/* ======================
-   FOOTER
-====================== */
+/* FOOTER */
 footer{
   padding:40px 0;
   border-top:1px solid var(--line);
   text-align:center;
-  font-size:13px;
   color:var(--muted);
 }
 
-/* ======================
-   RESPONSIVE
-====================== */
 @media(max-width:900px){
-  .services,.projects{
-    grid-template-columns:1fr;
-  }
-  .hero h1{
-    font-size:44px;
-  }
+  .services,.projects{grid-template-columns:1fr;}
+  .hero h1{font-size:44px;}
 }
 </style>
 </head>
@@ -274,16 +219,14 @@ footer{
       <a href="#services">Services</a>
       <a href="#projects">Projets</a>
       <a href="#pricing">Tarifs</a>
-      <a href="#contact">RDV</a>
     </nav>
   </div>
 </header>
 
 <section class="hero">
-  <div class="container hero-content">
-    <h1>Montage vidéo<br>minimal & impactant</h1>
-    <p>Une esthétique propre. Une narration précise.  
-    Des vidéos qui performent.</p>
+  <div class="hero-content container">
+    <h1>Montage vidéo<br>précis & premium</h1>
+    <p>Apple clean. SpaceX sharp.</p>
     <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
       Prendre rendez-vous
     </a>
@@ -294,18 +237,9 @@ footer{
   <div class="container">
     <h2 class="section-title">Services</h2>
     <div class="services">
-      <div class="service">
-        <h3>Vidéos courtes</h3>
-        <p>Shorts, Reels, TikTok optimisés rétention</p>
-      </div>
-      <div class="service">
-        <h3>Vidéos longues</h3>
-        <p>YouTube, storytelling, branding</p>
-      </div>
-      <div class="service">
-        <h3>Accompagnement</h3>
-        <p>Conseil, rythme, stratégie créative</p>
-      </div>
+      <div class="service">Vidéos courtes réseaux</div>
+      <div class="service">Vidéos longues YouTube</div>
+      <div class="service">Accompagnement créateur</div>
     </div>
   </div>
 </section>
@@ -314,9 +248,20 @@ footer{
   <div class="container">
     <h2 class="section-title">Projets</h2>
     <div class="projects">
-      <div class="project">Projet 01</div>
-      <div class="project">Projet 02</div>
-      <div class="project">Projet 03</div>
+
+      <!-- PROJET -->
+      <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+        <img src="https://via.placeholder.com/400x250?text=Projet+1">
+      </div>
+
+      <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+        <img src="https://via.placeholder.com/400x250?text=Projet+2">
+      </div>
+
+      <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
+        <img src="https://via.placeholder.com/400x250?text=Projet+3">
+      </div>
+
     </div>
   </div>
 </section>
@@ -326,71 +271,32 @@ footer{
     <h2 class="section-title">Grille tarifaire</h2>
     <div class="pricing-wrap">
       <table>
-        <thead>
-          <tr>
-            <th>Service</th>
-            <th>Description</th>
-            <th>Type</th>
-            <th>Prix</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Montage short</td>
-            <td>Vidéo verticale réseaux sociaux</td>
-            <td>Unitaire</td>
-            <td>20€</td>
-          </tr>
-          <tr>
-            <td>Montage long</td>
-            <td>Vidéo YouTube horizontale</td>
-            <td>Unitaire</td>
-            <td>80€</td>
-          </tr>
-          <tr>
-            <td>Accompagnement</td>
-            <td>Suivi et conseils créateur</td>
-            <td>Mensuel</td>
-            <td>50€/mois</td>
-          </tr>
-        </tbody>
+        <tr><th>Service</th><th>Description</th><th>Type</th><th>Prix</th></tr>
+        <tr><td>Montage short</td><td>Vidéo verticale réseaux</td><td>Unitaire</td><td>20€</td></tr>
+        <tr><td>Montage long</td><td>Vidéo YouTube</td><td>Unitaire</td><td>80€</td></tr>
+        <tr><td>Accompagnement</td><td>Suivi créateur</td><td>Mensuel</td><td>50€/mois</td></tr>
       </table>
     </div>
-
-    <div class="pricing-cta">
-      <a class="btn" onclick="downloadPrices()">Télécharger la grille</a>
-    </div>
   </div>
 </section>
 
-<section id="contact">
-  <div class="container contact">
-    <h2 class="section-title">Travaillons ensemble</h2>
-    <p>Un appel suffit pour voir si on est faits pour bosser ensemble.</p>
-    <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
-      Réserver un appel
-    </a>
-  </div>
-</section>
+<footer>© 2026 Thom Monteur</footer>
 
-<footer>
-  © 2026 Thom Monteur — Precision over noise
-</footer>
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeVideo()">
+  <div class="lightbox-content" id="videoContainer"></div>
+</div>
 
 <script>
-function downloadPrices(){
-  const data = `Service,Description,Type,Prix
-Montage short,Vidéo verticale réseaux,Unitaire,20€
-Montage long,Vidéo YouTube,Unitaire,80€
-Accompagnement,Suivi créateur,Mensuel,50€/mois`;
-
-  const blob = new Blob([data],{type:'text/csv'});
-  const url = URL.createObjectURL(blob);
-  const a=document.createElement('a');
-  a.href=url;
-  a.download='grille-tarifaire-thom-monteur.csv';
-  a.click();
-  URL.revokeObjectURL(url);
+function openVideo(url){
+  const box=document.getElementById("lightbox");
+  const container=document.getElementById("videoContainer");
+  container.innerHTML=`<iframe src="${url}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
+  box.classList.add("active");
+}
+function closeVideo(){
+  document.getElementById("lightbox").classList.remove("active");
+  document.getElementById("videoContainer").innerHTML="";
 }
 </script>
 
