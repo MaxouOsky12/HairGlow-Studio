@@ -1,298 +1,175 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Le Refuge du Style Intérieur - Sélection Amazon</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thom Monteur | Montage Vidéo Pro</title>
+<style>
+/* —————————————————
+   RESET & BASE
+————————————————— */
+* { margin:0; padding:0; box-sizing:border-box; }
+html { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+body { background:#fff; color:#222; }
+a { text-decoration:none; color:inherit; }
 
-    <style>
-        :root {
-            --bg-body: #f9f7f2; 
-            --bg-card: #ffffff;
-            --text-dark: #3a322d;
-            --accent-refuge: #5d4037; 
-            --gold-refuge: #c4a47c;
-            --amazon-yellow: #f0c14b;
-            --amazon-border: #a88734;
-            --prime-blue: #00a8e1;
-            --shadow-soft: 0 10px 30px rgba(0,0,0,0.05);
-        }
+/* —————————————————
+   HEADER & HERO
+————————————————— */
+header {
+  position:fixed; top:0; left:0; width:100%;
+  background:rgba(0,0,0,0.7); padding:15px 30px;
+  display:flex; justify-content:space-between; align-items:center;
+  z-index:1000;
+}
+header h1 { color:#fff; font-size:24px; }
+nav a { margin-left:20px; color:#fff; font-weight:500; }
+.hero {
+  height:100vh; background:#111 url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1350') center/cover no-repeat;
+  display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center;
+}
+.hero h2 {
+  font-size:48px; color:#fff; text-shadow:0 2px 8px rgba(0,0,0,0.6);
+}
+.hero p { color:#eee; margin-top:10px; font-size:20px; }
+.hero .btn {
+  margin-top:20px; padding:15px 30px;
+  background:#ff005e; color:#fff; border-radius:6px;
+  font-weight:bold; transition:0.3s;
+}
+.hero .btn:hover { background:#e60052; }
 
-        body {
-            font-family: 'Manrope', sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-            margin: 0;
-            line-height: 1.6;
-        }
+/* —————————————————
+   SECTIONS
+————————————————— */
+.section { padding:80px 40px; }
+.section h2 { font-size:32px; margin-bottom:20px; text-align:center;color:#111; }
+.services-grid {
+  display:grid; gap:20px;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+}
+.card {
+  padding:20px; border:1px solid #eee; border-radius:8px;
+  text-align:center; transition:0.3s; background:#fafafa;
+}
+.card:hover { transform:translateY(-6px); box-shadow:0 4px 12px rgba(0,0,0,0.1); }
+.card h3 { margin-bottom:10px; color:#222; font-size:20px; }
+.card p { font-size:16px; color:#555; }
 
-        /* --- HEADER BRANDING --- */
-        header {
-            background: white;
-            padding: 30px 20px;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-        }
-        .brand-logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.2em;
-            font-weight: 900;
-            color: var(--accent-refuge);
-            letter-spacing: -1px;
-        }
-        .brand-logo span { color: var(--gold-refuge); }
+/* —————————————————
+   GALLERY
+————————————————— */
+.gallery {
+  display:flex; flex-wrap:wrap; gap:12px;
+  justify-content:center;
+}
+.gallery img {
+  width:calc(33% - 12px); border-radius:6px;
+  object-fit:cover; max-height:180px;
+}
 
-        /* --- HERO --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1600&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
-            height: 350px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            text-align: center;
-            padding: 0 20px;
-        }
-        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.5em; margin: 0; }
-        .hero p { font-size: 1.2em; font-weight: 400; opacity: 0.9; }
-
-        /* --- BARRE AMAZON --- */
-        .amazon-bar {
-            background: #232f3e;
-            color: white;
-            padding: 12px;
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            font-size: 0.85em;
-            font-weight: 600;
-            flex-wrap: wrap;
-        }
-        .amazon-bar i { color: #ff9900; }
-
-        /* --- GRILLE PRODUITS --- */
-        .container {
-            max-width: 1400px;
-            margin: 50px auto;
-            padding: 0 20px;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        /* --- CARTE --- */
-        .card {
-            background: var(--bg-card);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--shadow-soft);
-            transition: transform 0.3s ease;
-            display: flex;
-            flex-direction: column;
-            border: 1px solid #f0efeb;
-        }
-        .card:hover { transform: translateY(-8px); }
-
-        .image-box {
-            height: 320px; /* Hauteur fixe pour l'alignement */
-            position: relative;
-            background: #fff;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .image-box img { 
-            width: 100%; 
-            height: 100%; 
-            object-fit: contain; /* Évite de couper les produits Amazon */
-            padding: 15px;
-            transition: transform 0.4s ease;
-        }
-        .card:hover .image-box img { transform: scale(1.05); }
-
-        .content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        
-        .tag { color: var(--gold-refuge); font-size: 0.75em; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
-        
-        .title { font-family: 'Playfair Display', serif; font-size: 1.4em; margin: 0 0 10px 0; color: #1a1a1a; line-height: 1.2; height: 2.4em; overflow: hidden; }
-
-        .price-section {
-            margin-top: auto;
-            display: flex;
-            align-items: baseline;
-            gap: 10px;
-            margin-bottom: 20px;
-        }
-        .price { font-size: 1.8em; font-weight: 800; color: #111; }
-        .old-price { text-decoration: line-through; color: #888; font-size: 0.9em; }
-
-        /* BOUTON AMAZON */
-        .btn-amazon {
-            background: linear-gradient(to bottom, #f7dfa5, #f0c14b);
-            border: 1px solid var(--amazon-border);
-            color: #111;
-            padding: 14px;
-            border-radius: 8px;
-            text-align: center;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 0.9em;
-            transition: 0.2s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
-        .btn-amazon:hover { background: linear-gradient(to bottom, #f5d78e, #eeb933); box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
-
-        footer {
-            background: #3a322d;
-            color: #f9f7f2;
-            padding: 50px 20px;
-            text-align: center;
-            margin-top: 60px;
-        }
-    </style>
+/* —————————————————
+   CONTACT & FOOTER
+————————————————— */
+footer { text-align:center; padding:20px; background:#111; color:#fff; font-size:14px; }
+@media (max-width:768px) {
+  .gallery img { width:calc(50% - 12px); }
+}
+@media (max-width:480px) {
+  header { flex-direction:column; }
+  nav a { margin:8px 0; }
+  .gallery img { width:100%; }
+}
+</style>
 </head>
 <body>
 
-    <header>
-        <div class="brand-logo">le refuge<span>.</span>du style intérieur</div>
-    </header>
+<!-- HEADER -->
+<header>
+  <h1>Thom Monteur</h1>
+  <nav>
+    <a href="#services">Services</a>
+    <a href="#projects">Projets</a>
+    <a href="#pricing">Tarifs</a>
+    <a href="#contact">RDV</a>
+  </nav>
+</header>
 
-    <div class="hero">
-        <h1>L'Art de se Sentir Chez Soi</h1>
-        <p>Sélection exclusive d'objets et mobiliers pour un refuge unique.</p>
+<!-- HERO -->
+<section class="hero">
+  <h2>Vos images, notre montage</h2>
+  <p>Des vidéos qui marquent & captivent</p>
+  <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">Réserver un RDV</a>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="section">
+  <h2>Nos Services</h2>
+  <div class="services-grid">
+    <div class="card">
+      <h3>Montages courts</h3>
+      <p>Réseaux sociaux (TikTok / Instagram / Shorts)</p>
     </div>
-
-    <div class="amazon-bar">
-        <span><i class="fa-brands fa-amazon"></i> Partenaire Amazon Affilié</span>
-        <span><i class="fa-solid fa-truck"></i> Livraison Rapide Prime</span>
-        <span><i class="fa-solid fa-lock"></i> Paiement Sécurisé</span>
+    <div class="card">
+      <h3>Montages longs</h3>
+      <p>Contenu YouTube & présentations</p>
     </div>
-
-    <div class="container">
-        <div class="grid">
-
-            <div class="card">
-                <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81+or4Ac2NL._AC_SL1500_.jpg" alt="Canapé Galway">
-                </div>
-                <div class="content">
-                    <div class="tag">Salon • Harmonieux</div>
-                    <h2 class="title">Canapé d’Angle Galway Beige</h2>
-                    <div class="price-section">
-                        <span class="price">549,90€</span>
-                        <span class="old-price">599,90€</span>
-                    </div>
-                    <a href="https://amzn.to/4aHFoaM" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81t5jMHvtsL._AC_SL1500_.jpg" alt="Canapé Meluti">
-                </div>
-                <div class="content">
-                    <div class="tag">Détente • Design</div>
-                    <h2 class="title">Canapé d'angle Convertible MELUTI</h2>
-                    <div class="price-section">
-                        <span class="price">899,99€</span>
-                    </div>
-                    <a href="https://amzn.to/3KLQv89" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81yBaaXlGFL._AC_SL1500_.jpg" alt="Buffet Lluvia">
-                </div>
-                <div class="content">
-                    <div class="tag">Mobilier • Chic</div>
-                    <h2 class="title">Buffet Lluvia à 3 Portes Premium</h2>
-                    <div class="price-section">
-                        <span class="price">185,99€</span>
-                    </div>
-                    <a href="https://amzn.to/4rXgkmt" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/812TgOFGQOL._AC_SL1500_.jpg" alt="Lit Complet">
-                </div>
-                <div class="content">
-                    <div class="tag">Chambre • Ambiance</div>
-                    <h2 class="title">Ensemble Lit Complet pour Chambre</h2>
-                    <div class="price-section">
-                        <span class="price">474,97€</span>
-                    </div>
-                    <a href="https://amzn.to/44xS40d" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/71JpmLuq76L._AC_SL1500_.jpg" alt="Meuble Rimini">
-                </div>
-                <div class="content">
-                    <div class="tag">Rangement • Bain</div>
-                    <h2 class="title">Meuble sous-lavabo Rimini Design</h2>
-                    <div class="price-section">
-                        <span class="price">219,00€</span>
-                    </div>
-                    <a href="https://amzn.to/4qge7Rn" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/81nuyjFH+WL._AC_SL1500_.jpg" alt="Table à manger">
-                </div>
-                <div class="content">
-                    <div class="tag">Cuisine • Convivialité</div>
-                    <h2 class="title">Table de Salle à Manger Rectangle</h2>
-                    <div class="price-section">
-                        <span class="price">269,99€</span>
-                    </div>
-                    <a href="https://amzn.to/4snPzI6" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="image-box">
-                    <img src="https://m.media-amazon.com/images/I/712gLX2g7yL._AC_SL1500_.jpg" alt="Vases Céramique">
-                </div>
-                <div class="content">
-                    <div class="tag">Décoration • Style</div>
-                    <h2 class="title">Duo de Vases en Céramique Blanche</h2>
-                    <div class="price-section">
-                        <span class="price">19,99€</span>
-                    </div>
-                    <a href="https://amzn.to/3YbQldi" class="btn-amazon" target="_blank">Voir sur Amazon <i class="fa-brands fa-amazon"></i></a>
-                </div>
-            </div>
-
-        </div>
+    <div class="card">
+      <h3>Accompagnement pro</h3>
+      <p>Conseils personnalisés & stratégie vidéo</p>
     </div>
+  </div>
+</section>
 
-    <footer>
-        <p><strong>le refuge.du style intérieur</strong></p>
-        <p style="font-size: 0.8em; max-width: 600px; margin: 20px auto; opacity: 0.8; padding: 0 15px;">
-            En tant que Partenaire Amazon, je réalise un bénéfice sur les achats remplissant les conditions requises. Les liens présents sur cette page sont des liens d'affiliation.
-        </p>
-        <p style="font-size: 0.7em; opacity: 0.5;">© 2025 Tous droits réservés.</p>
-    </footer>
+<!-- PROJECTS -->
+<section id="projects" class="section" style="background:#f9f9f9;">
+  <h2>Projets Récents</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/400x250?text=Projet+1" alt="Projet 1">
+    <img src="https://via.placeholder.com/400x250?text=Projet+2" alt="Projet 2">
+    <img src="https://via.placeholder.com/400x250?text=Projet+3" alt="Projet 3">
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" class="section">
+  <h2>Tarifs & Offres</h2>
+  <div class="services-grid">
+    <div class="card">
+      <h3>Abonnement Mensuel</h3>
+      <p>Sur mesure pour tes vidéos  📹</p>
+    </div>
+    <div class="card">
+      <h3>Devis personnalisé</h3>
+      <p>Création unique selon ton besoin</p>
+    </div>
+  </div>
+</section>
+
+<!-- CHOIX -->
+<section class="section" style="background:#f9f9f9;">
+  <h2>Pourquoi nous choisir ?</h2>
+  <div class="services-grid">
+    <div class="card">⭐ Première vidéo à -50% contre avis</div>
+    <div class="card">⚡ Livraison rapide & efficace</div>
+    <div class="card">🎯 Vidéos alignées avec ton objectif</div>
+    <div class="card">💡 Storytelling créatif</div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="section">
+  <h2>Prendre RDV</h2>
+  <p style="text-align:center; font-size:18px;">Clique pour réserver ton appel</p>
+  <div style="text-align:center; margin-top:20px;">
+    <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">Calendly</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  &copy; 2026 Thom Monteur — Tous droits réservés
+</footer>
 
 </body>
 </html>
