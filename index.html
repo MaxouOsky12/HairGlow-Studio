@@ -7,16 +7,16 @@
 
 <style>
 /* ======================
-   APPLE DARK STYLE
+   CORE STYLE
 ====================== */
 :root{
   --bg:#0b0b0d;
-  --bg-soft:#141417;
-  --card:#1c1c20;
+  --bg-soft:#121214;
+  --card:#17171b;
+  --line:#26262c;
   --text:#ffffff;
-  --muted:#a1a1aa;
+  --muted:#9ca3af;
   --accent:#0a84ff;
-  --glow:rgba(10,132,255,0.4);
 }
 
 *{
@@ -29,7 +29,20 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.6;
+  line-height:1.4;
+}
+
+/* ======================
+   GLOBAL LAYOUT
+====================== */
+.container{
+  max-width:1100px;
+  margin:0 auto;
+  padding:0 24px;
+}
+
+section{
+  padding:96px 0;
 }
 
 /* ======================
@@ -39,24 +52,23 @@ header{
   position:fixed;
   top:0;
   width:100%;
-  backdrop-filter:blur(12px);
-  background:rgba(10,10,12,0.7);
-  padding:20px 50px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
+  backdrop-filter:blur(14px);
+  background:rgba(11,11,13,0.75);
+  border-bottom:1px solid var(--line);
   z-index:1000;
 }
 
-header h1{
-  font-weight:600;
-  letter-spacing:-0.5px;
+.header-inner{
+  height:72px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
 }
 
 nav a{
-  margin-left:30px;
+  margin-left:28px;
+  font-size:14px;
   color:var(--muted);
-  font-size:15px;
 }
 
 nav a:hover{
@@ -67,84 +79,79 @@ nav a:hover{
    HERO
 ====================== */
 .hero{
-  height:100vh;
+  min-height:100vh;
   display:flex;
-  flex-direction:column;
-  justify-content:center;
   align-items:center;
-  text-align:center;
-  padding:0 20px;
 }
 
-.hero h2{
+.hero-content{
+  text-align:center;
+  max-width:760px;
+  margin:0 auto;
+}
+
+.hero h1{
   font-size:64px;
+  letter-spacing:-1.8px;
   font-weight:700;
-  letter-spacing:-1.5px;
-  max-width:900px;
 }
 
 .hero p{
   margin-top:20px;
-  font-size:22px;
+  font-size:20px;
   color:var(--muted);
 }
 
 .btn{
-  margin-top:40px;
-  padding:16px 36px;
+  margin-top:36px;
+  padding:14px 34px;
   border-radius:999px;
   background:var(--accent);
   color:white;
+  font-size:15px;
   font-weight:500;
-  box-shadow:0 0 40px var(--glow);
-  transition:0.3s;
+  display:inline-block;
+  transition:0.25s;
 }
 
 .btn:hover{
-  transform:translateY(-2px);
-  box-shadow:0 0 60px var(--glow);
+  transform:translateY(-1px);
 }
 
 /* ======================
-   SECTIONS
+   TITLES
 ====================== */
-section{
-  padding:120px 60px;
-}
-
 .section-title{
-  font-size:42px;
-  margin-bottom:60px;
+  text-align:center;
+  font-size:40px;
   letter-spacing:-1px;
+  margin-bottom:56px;
 }
 
 /* ======================
-   CARDS
+   SERVICES
 ====================== */
-.grid{
+.services{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-  gap:30px;
+  grid-template-columns:repeat(3,1fr);
+  gap:28px;
 }
 
-.card{
-  background:linear-gradient(180deg,#1e1e23,#151518);
-  padding:30px;
-  border-radius:24px;
-  transition:0.3s;
+.service{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:28px;
+  text-align:center;
 }
 
-.card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 40px rgba(0,0,0,0.4);
+.service h3{
+  font-size:18px;
+  margin-bottom:8px;
 }
 
-.card h3{
-  font-size:22px;
-  margin-bottom:10px;
-}
-
-.card p{
+.service p{
+  font-size:14px;
   color:var(--muted);
 }
 
@@ -152,68 +159,108 @@ section{
    PROJECTS
 ====================== */
 .projects{
-  display:flex;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
   gap:20px;
-  flex-wrap:wrap;
 }
 
 .project{
-  flex:1;
-  min-width:280px;
-  height:200px;
-  border-radius:20px;
-  background:linear-gradient(135deg,#2a2a2f,#1a1a1f);
+  height:180px;
+  border-radius:18px;
+  background:linear-gradient(135deg,#1f1f24,#141418);
   display:flex;
   align-items:center;
   justify-content:center;
   color:var(--muted);
+  font-size:14px;
 }
 
 /* ======================
-   PRICING TABLE
+   PRICING
 ====================== */
-.pricing-table{
-  width:100%;
-  border-collapse:collapse;
-  border-radius:20px;
-  overflow:hidden;
+.pricing-wrap{
+  max-width:900px;
+  margin:0 auto;
   background:var(--card);
+  border:1px solid var(--line);
+  border-radius:22px;
+  overflow:hidden;
 }
 
-.pricing-table th,
-.pricing-table td{
-  padding:20px;
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:14px;
+}
+
+thead{
+  background:#1e1e23;
+}
+
+th{
+  padding:14px 18px;
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--muted);
   text-align:left;
 }
 
-.pricing-table th{
-  background:#202025;
+td{
+  padding:16px 18px;
+  border-top:1px solid var(--line);
+  line-height:1.35;
+}
+
+td:first-child{
   font-weight:500;
 }
 
-.pricing-table tr{
-  border-bottom:1px solid #2a2a2f;
+td:last-child{
+  color:var(--accent);
+  font-weight:500;
 }
 
-.download{
-  margin-top:30px;
+.pricing-cta{
+  text-align:center;
+  margin-top:32px;
+}
+
+/* ======================
+   CONTACT
+====================== */
+.contact{
+  text-align:center;
+  max-width:600px;
+  margin:0 auto;
+}
+
+.contact p{
+  color:var(--muted);
+  margin:18px 0 28px;
 }
 
 /* ======================
    FOOTER
 ====================== */
 footer{
-  padding:40px;
+  padding:40px 0;
+  border-top:1px solid var(--line);
   text-align:center;
+  font-size:13px;
   color:var(--muted);
 }
 
 /* ======================
    RESPONSIVE
 ====================== */
-@media(max-width:768px){
-  .hero h2{font-size:42px;}
-  section{padding:100px 30px;}
+@media(max-width:900px){
+  .services,.projects{
+    grid-template-columns:1fr;
+  }
+  .hero h1{
+    font-size:44px;
+  }
 }
 </style>
 </head>
@@ -221,107 +268,129 @@ footer{
 <body>
 
 <header>
-  <h1>Thom Monteur</h1>
-  <nav>
-    <a href="#services">Services</a>
-    <a href="#projects">Projets</a>
-    <a href="#pricing">Tarifs</a>
-    <a href="#contact">RDV</a>
-  </nav>
+  <div class="container header-inner">
+    <strong>Thom Monteur</strong>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#projects">Projets</a>
+      <a href="#pricing">Tarifs</a>
+      <a href="#contact">RDV</a>
+    </nav>
+  </div>
 </header>
 
 <section class="hero">
-  <h2>Des montages vidéo  
-  à l’esthétique Apple.</h2>
-  <p>Minimal. Impactant. Mémorable.</p>
-  <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
-    Prendre rendez-vous
-  </a>
+  <div class="container hero-content">
+    <h1>Montage vidéo<br>minimal & impactant</h1>
+    <p>Une esthétique propre. Une narration précise.  
+    Des vidéos qui performent.</p>
+    <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
+      Prendre rendez-vous
+    </a>
+  </div>
 </section>
 
 <section id="services">
-  <h2 class="section-title">Services</h2>
-  <div class="grid">
-    <div class="card">
-      <h3>Montages courts</h3>
-      <p>Reels, TikTok, Shorts optimisés pour la rétention.</p>
-    </div>
-    <div class="card">
-      <h3>Montages longs</h3>
-      <p>YouTube, vidéos brandées, storytelling.</p>
-    </div>
-    <div class="card">
-      <h3>Accompagnement</h3>
-      <p>Stratégie, rythme, direction créative.</p>
+  <div class="container">
+    <h2 class="section-title">Services</h2>
+    <div class="services">
+      <div class="service">
+        <h3>Vidéos courtes</h3>
+        <p>Shorts, Reels, TikTok optimisés rétention</p>
+      </div>
+      <div class="service">
+        <h3>Vidéos longues</h3>
+        <p>YouTube, storytelling, branding</p>
+      </div>
+      <div class="service">
+        <h3>Accompagnement</h3>
+        <p>Conseil, rythme, stratégie créative</p>
+      </div>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <h2 class="section-title">Projets</h2>
-  <div class="projects">
-    <div class="project">Projet 01</div>
-    <div class="project">Projet 02</div>
-    <div class="project">Projet 03</div>
+  <div class="container">
+    <h2 class="section-title">Projets</h2>
+    <div class="projects">
+      <div class="project">Projet 01</div>
+      <div class="project">Projet 02</div>
+      <div class="project">Projet 03</div>
+    </div>
   </div>
 </section>
 
 <section id="pricing">
-  <h2 class="section-title">Tarifs</h2>
+  <div class="container">
+    <h2 class="section-title">Grille tarifaire</h2>
+    <div class="pricing-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Description</th>
+            <th>Type</th>
+            <th>Prix</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Montage short</td>
+            <td>Vidéo verticale réseaux sociaux</td>
+            <td>Unitaire</td>
+            <td>20€</td>
+          </tr>
+          <tr>
+            <td>Montage long</td>
+            <td>Vidéo YouTube horizontale</td>
+            <td>Unitaire</td>
+            <td>80€</td>
+          </tr>
+          <tr>
+            <td>Accompagnement</td>
+            <td>Suivi et conseils créateur</td>
+            <td>Mensuel</td>
+            <td>50€/mois</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
 
-  <table class="pricing-table">
-    <tr>
-      <th>Offre</th>
-      <th>Contenu</th>
-      <th>Prix</th>
-    </tr>
-    <tr>
-      <td>Starter</td>
-      <td>4 vidéos courtes / mois</td>
-      <td>149€</td>
-    </tr>
-    <tr>
-      <td>Pro</td>
-      <td>12 vidéos + 1 longue</td>
-      <td>349€</td>
-    </tr>
-    <tr>
-      <td>Sur-mesure</td>
-      <td>Projet personnalisé</td>
-      <td>Devis</td>
-    </tr>
-  </table>
-
-  <div class="download">
-    <a class="btn" href="#" onclick="downloadPrices()">Télécharger le tableau des prix</a>
+    <div class="pricing-cta">
+      <a class="btn" onclick="downloadPrices()">Télécharger la grille</a>
+    </div>
   </div>
 </section>
 
 <section id="contact">
-  <h2 class="section-title">Travaillons ensemble</h2>
-  <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
-    Réserver un appel
-  </a>
+  <div class="container contact">
+    <h2 class="section-title">Travaillons ensemble</h2>
+    <p>Un appel suffit pour voir si on est faits pour bosser ensemble.</p>
+    <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
+      Réserver un appel
+    </a>
+  </div>
 </section>
 
 <footer>
-  © 2026 Thom Monteur — Design inspired by Apple
+  © 2026 Thom Monteur — Precision over noise
 </footer>
 
 <script>
 function downloadPrices(){
-  const data = `Offre,Contenu,Prix
-Starter,4 vidéos courtes / mois,149€
-Pro,12 vidéos + 1 longue,349€
-Sur-mesure,Projet personnalisé,Devis`;
+  const data = `Service,Description,Type,Prix
+Montage short,Vidéo verticale réseaux,Unitaire,20€
+Montage long,Vidéo YouTube,Unitaire,80€
+Accompagnement,Suivi créateur,Mensuel,50€/mois`;
 
-  const blob = new Blob([data], { type: 'text/csv' });
-  const url = window.URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'tarifs-thom-monteur.csv';
+  const blob = new Blob([data],{type:'text/csv'});
+  const url = URL.createObjectURL(blob);
+  const a=document.createElement('a');
+  a.href=url;
+  a.download='grille-tarifaire-thom-monteur.csv';
   a.click();
-  window.URL.revokeObjectURL(url);
+  URL.revokeObjectURL(url);
 }
 </script>
 
