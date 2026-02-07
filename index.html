@@ -21,7 +21,7 @@ body{
   font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;
   background:var(--bg);
   color:var(--text);
-  line-height:1.4;
+  line-height:1.45;
 }
 
 .container{
@@ -98,14 +98,52 @@ nav a:hover{color:var(--text);}
 .services{
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:28px;
+  gap:32px;
 }
-.service{
-  background:var(--card);
+
+.service-card{
+  background:linear-gradient(180deg,#18181d,#121216);
   border:1px solid var(--line);
-  border-radius:20px;
-  padding:28px;
-  text-align:center;
+  border-radius:24px;
+  padding:32px;
+  transition:.35s;
+}
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 30px 60px rgba(0,0,0,.4);
+}
+.service-card.highlight{
+  border-color:var(--accent);
+}
+.service-tag{
+  font-size:11px;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  color:var(--muted);
+}
+.service-card h3{
+  font-size:20px;
+  margin:12px 0 10px;
+}
+.service-desc{
+  font-size:14px;
+  color:var(--muted);
+  margin-bottom:18px;
+}
+.service-card ul{
+  list-style:none;
+}
+.service-card li{
+  font-size:13px;
+  margin-bottom:8px;
+  padding-left:16px;
+  position:relative;
+}
+.service-card li::before{
+  content:"•";
+  position:absolute;
+  left:0;
+  color:var(--accent);
 }
 
 /* PROJECTS */
@@ -120,8 +158,6 @@ nav a:hover{color:var(--text);}
   border-radius:18px;
   overflow:hidden;
   cursor:pointer;
-  background:#111;
-  transition:.3s;
 }
 .project img{
   width:100%;
@@ -137,9 +173,8 @@ nav a:hover{color:var(--text);}
   align-items:center;
   justify-content:center;
   font-size:48px;
-  color:white;
-  opacity:0;
   background:rgba(0,0,0,.35);
+  opacity:0;
   transition:.3s;
 }
 .project:hover img{transform:scale(1.05);}
@@ -161,11 +196,10 @@ nav a:hover{color:var(--text);}
   max-width:900px;
   aspect-ratio:16/9;
 }
-.lightbox iframe,
-.lightbox video{
+.lightbox iframe{
   width:100%;
   height:100%;
-  border-radius:12px;
+  border-radius:14px;
 }
 
 /* PRICING */
@@ -226,7 +260,7 @@ footer{
 <section class="hero">
   <div class="hero-content container">
     <h1>Montage vidéo<br>précis & premium</h1>
-    <p>Apple clean. SpaceX sharp.</p>
+    <p>Esthétique Apple. Rigueur SpaceX.</p>
     <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
       Prendre rendez-vous
     </a>
@@ -237,9 +271,47 @@ footer{
   <div class="container">
     <h2 class="section-title">Services</h2>
     <div class="services">
-      <div class="service">Vidéos courtes réseaux</div>
-      <div class="service">Vidéos longues YouTube</div>
-      <div class="service">Accompagnement créateur</div>
+      <div class="service-card">
+        <span class="service-tag">Réseaux sociaux</span>
+        <h3>Montage vidéo short</h3>
+        <p class="service-desc">
+          Vidéos verticales pensées pour capter l’attention
+          dès les premières secondes.
+        </p>
+        <ul>
+          <li>TikTok, Reels, Shorts</li>
+          <li>Hooks & rythme rapide</li>
+          <li>Optimisation algorithmes</li>
+        </ul>
+      </div>
+
+      <div class="service-card highlight">
+        <span class="service-tag">YouTube</span>
+        <h3>Montage vidéo long</h3>
+        <p class="service-desc">
+          Narration fluide pour transformer une vidéo
+          longue en contenu captivant.
+        </p>
+        <ul>
+          <li>Storytelling structuré</li>
+          <li>Coupes propres</li>
+          <li>Visionnage sans fatigue</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <span class="service-tag">Stratégie</span>
+        <h3>Accompagnement créateur</h3>
+        <p class="service-desc">
+          Analyse, conseils et direction créative
+          pour faire évoluer ton contenu.
+        </p>
+        <ul>
+          <li>Audit & feedback</li>
+          <li>Formats performants</li>
+          <li>Suivi personnalisé</li>
+        </ul>
+      </div>
     </div>
   </div>
 </section>
@@ -248,20 +320,15 @@ footer{
   <div class="container">
     <h2 class="section-title">Projets</h2>
     <div class="projects">
-
-      <!-- PROJET -->
       <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
         <img src="https://via.placeholder.com/400x250?text=Projet+1">
       </div>
-
       <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
         <img src="https://via.placeholder.com/400x250?text=Projet+2">
       </div>
-
       <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
         <img src="https://via.placeholder.com/400x250?text=Projet+3">
       </div>
-
     </div>
   </div>
 </section>
@@ -282,7 +349,6 @@ footer{
 
 <footer>© 2026 Thom Monteur</footer>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" onclick="closeVideo()">
   <div class="lightbox-content" id="videoContainer"></div>
 </div>
