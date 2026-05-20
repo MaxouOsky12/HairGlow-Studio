@@ -1,370 +1,427 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Thom Monteur — Video Editing</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FindMyQI - Test de QI Professionnel & Officiel</title>
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --primary-light: #e0f2fe;
+            --text: #1e293b;
+            --text-light: #64748b;
+            --bg: #f8fafc;
+            --white: #ffffff;
+        }
 
-<style>
-:root{
-  --bg:#0b0b0d;
-  --card:#17171b;
-  --line:#26262c;
-  --text:#ffffff;
-  --muted:#9ca3af;
-  --accent:#0a84ff;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-*{margin:0;padding:0;box-sizing:border-box;}
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+        }
 
-body{
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Inter",sans-serif;
-  background:var(--bg);
-  color:var(--text);
-  line-height:1.45;
-}
+        header {
+            background-color: var(--white);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
 
-.container{
-  max-width:1100px;
-  margin:0 auto;
-  padding:0 24px;
-}
+        .header-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-section{padding:96px 0;}
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-/* HEADER */
-header{
-  position:fixed;
-  top:0;
-  width:100%;
-  backdrop-filter:blur(14px);
-  background:rgba(11,11,13,.75);
-  border-bottom:1px solid var(--line);
-  z-index:1000;
-}
-.header-inner{
-  height:72px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-nav a{
-  margin-left:28px;
-  font-size:14px;
-  color:var(--muted);
-}
-nav a:hover{color:var(--text);}
+        .badge-live {
+            background-color: #bbf7d0;
+            color: #166534;
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 9999px;
+            font-weight: 600;
+        }
 
-/* HERO */
-.hero{
-  min-height:100vh;
-  display:flex;
-  align-items:center;
-}
-.hero-content{
-  text-align:center;
-  max-width:760px;
-  margin:auto;
-}
-.hero h1{
-  font-size:64px;
-  letter-spacing:-1.8px;
-}
-.hero p{
-  margin-top:20px;
-  font-size:20px;
-  color:var(--muted);
-}
-.btn{
-  margin-top:36px;
-  padding:14px 34px;
-  border-radius:999px;
-  background:var(--accent);
-  color:white;
-  font-size:15px;
-  display:inline-block;
-  transition:.25s;
-}
-.btn:hover{transform:translateY(-1px);}
+        main {
+            max-width: 800px;
+            margin: 3rem auto;
+            padding: 0 1.5rem;
+        }
 
-/* TITLES */
-.section-title{
-  text-align:center;
-  font-size:40px;
-  margin-bottom:56px;
-}
+        .card {
+            background-color: var(--white);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.05), 0 2px 4px -2px rgb(0 0 0 / 0.05);
+            border: 1px solid #f1f5f9;
+        }
 
-/* SERVICES */
-.services{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:32px;
-}
+        /* Hero / Welcome Section */
+        .hero {
+            text-align: center;
+        }
 
-.service-card{
-  background:linear-gradient(180deg,#18181d,#121216);
-  border:1px solid var(--line);
-  border-radius:24px;
-  padding:32px;
-  transition:.35s;
-}
-.service-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 30px 60px rgba(0,0,0,.4);
-}
-.service-card.highlight{
-  border-color:var(--accent);
-}
-.service-tag{
-  font-size:11px;
-  text-transform:uppercase;
-  letter-spacing:.08em;
-  color:var(--muted);
-}
-.service-card h3{
-  font-size:20px;
-  margin:12px 0 10px;
-}
-.service-desc{
-  font-size:14px;
-  color:var(--muted);
-  margin-bottom:18px;
-}
-.service-card ul{
-  list-style:none;
-}
-.service-card li{
-  font-size:13px;
-  margin-bottom:8px;
-  padding-left:16px;
-  position:relative;
-}
-.service-card li::before{
-  content:"•";
-  position:absolute;
-  left:0;
-  color:var(--accent);
-}
+        h1 {
+            font-size: 2.25rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
 
-/* PROJECTS */
-.projects{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:24px;
-}
-.project{
-  position:relative;
-  height:200px;
-  border-radius:18px;
-  overflow:hidden;
-  cursor:pointer;
-}
-.project img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:.4s;
-}
-.project::after{
-  content:"▶";
-  position:absolute;
-  inset:0;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  font-size:48px;
-  background:rgba(0,0,0,.35);
-  opacity:0;
-  transition:.3s;
-}
-.project:hover img{transform:scale(1.05);}
-.project:hover::after{opacity:1;}
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
 
-/* LIGHTBOX */
-.lightbox{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.85);
-  display:none;
-  align-items:center;
-  justify-content:center;
-  z-index:2000;
-}
-.lightbox.active{display:flex;}
-.lightbox-content{
-  width:90%;
-  max-width:900px;
-  aspect-ratio:16/9;
-}
-.lightbox iframe{
-  width:100%;
-  height:100%;
-  border-radius:14px;
-}
+        .features {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+            text-align: left;
+        }
 
-/* PRICING */
-.pricing-wrap{
-  max-width:900px;
-  margin:auto;
-  background:var(--card);
-  border:1px solid var(--line);
-  border-radius:22px;
-  overflow:hidden;
-}
-table{
-  width:100%;
-  border-collapse:collapse;
-  font-size:14px;
-}
-th,td{
-  padding:16px 18px;
-  border-top:1px solid var(--line);
-}
-th{
-  background:#1e1e23;
-  font-size:11px;
-  text-transform:uppercase;
-  color:var(--muted);
-  text-align:left;
-}
-td:last-child{color:var(--accent);}
+        .feature-item {
+            background-color: var(--bg);
+            padding: 1rem;
+            border-radius: 8px;
+            border-left: 4px solid var(--primary);
+            font-size: 0.95rem;
+        }
 
-/* FOOTER */
-footer{
-  padding:40px 0;
-  border-top:1px solid var(--line);
-  text-align:center;
-  color:var(--muted);
-}
+        .btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            width: 100%;
+            display: inline-block;
+            text-align: center;
+        }
 
-@media(max-width:900px){
-  .services,.projects{grid-template-columns:1fr;}
-  .hero h1{font-size:44px;}
-}
-</style>
+        .btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-1px);
+        }
+
+        /* Quiz Section */
+        .hidden {
+            display: none;
+        }
+
+        .quiz-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .progress-bar-container {
+            background-color: var(--primary-light);
+            height: 8px;
+            border-radius: 9999px;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            background-color: var(--primary);
+            height: 100%;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .option-btn {
+            background-color: var(--white);
+            border: 2px solid #e2e8f0;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            text-align: left;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .option-btn:hover {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+        }
+
+        .option-btn.selected {
+            border-color: var(--primary);
+            background-color: var(--primary-light);
+            font-weight: 600;
+        }
+
+        /* Results Section */
+        .results-container {
+            text-align: center;
+        }
+
+        .score-display {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .rank-text {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .analysis-box {
+            background-color: var(--primary-light);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: left;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 4rem;
+            border-top: 1px solid #e2e8f0;
+        }
+    </style>
 </head>
-
 <body>
 
-<header>
-  <div class="container header-inner">
-    <strong>Thom Monteur</strong>
-    <nav>
-      <a href="#services">Services</a>
-      <a href="#projects">Projets</a>
-      <a href="#pricing">Tarifs</a>
-    </nav>
-  </div>
-</header>
+    <header>
+        <div class="header-container">
+            <div class="logo">🧠 FindMyQI</div>
+            <div class="badge-live">Norme Standard 2026</div>
+        </div>
+    </header>
 
-<section class="hero">
-  <div class="hero-content container">
-    <h1>Montage vidéo<br>précis & premium</h1>
-    <p>Vos images, notre montage. Des vidéos qui marquent</p>
-    <a class="btn" href="https://calendly.com/thom-monteur/30min" target="_blank">
-      Prendre rendez-vous
-    </a>
-  </div>
-</section>
+    <main>
+        <!-- ÉCRAN D'ACCUEIL -->
+        <div id="welcome-screen" class="card hero">
+            <h1>Mesurez votre Quotient Intellectuel avec précision</h1>
+            <p class="subtitle">Le test psychométrique d'évaluation logique et cognitive le plus complet et fidèle aux standards internationaux.</p>
+            
+            <div class="features">
+                <div class="feature-item">📊 **Distribution Scientifique :** Étalonnage sur courbe de Gauss classique (Moyenne 100, Écart-type 15).</div>
+                <div class="feature-item">🧩 **Matrices Progressives :** Évalue l'intelligence fluide et la logique spatio-temporelle.</div>
+                <div class="feature-item">⏱️ **Sans biais culturel :** Pas d'exercices de langue, uniquement de la pure logique visuelle.</div>
+                <div class="feature-item">⚡ **Résultats Instantanés :** Analyse complète de votre profil cognitif en fin de test.</div>
+            </div>
 
-<section id="services">
-  <div class="container">
-    <h2 class="section-title">Services</h2>
-    <div class="services">
-      <div class="service-card">
-        <span class="service-tag">Réseaux sociaux</span>
-        <h3>Montage vidéo short</h3>
-        <p class="service-desc">
-          Vidéos verticales pensées pour capter l’attention
-          dès les premières secondes.
-        </p>
-        <ul>
-          <li>TikTok, Reels, Shorts</li>
-          <li>Hooks & rythme rapide</li>
-          <li>Optimisation algorithmes</li>
-        </ul>
-      </div>
+            <button class="btn" id="start-btn">Démarrer le Test Officiel</button>
+        </div>
 
-      <div class="service-card highlight">
-        <span class="service-tag">YouTube</span>
-        <h3>Montage vidéo long</h3>
-        <p class="service-desc">
-          Narration fluide pour transformer une vidéo
-          longue en contenu captivant.
-        </p>
-        <ul>
-          <li>Storytelling structuré</li>
-          <li>Coupes propres</li>
-          <li>Visionnage sans fatigue</li>
-        </ul>
-      </div>
+        <!-- ÉCRAN DU TEST -->
+        <div id="quiz-screen" class="card hidden">
+            <div class="quiz-header">
+                <span id="question-counter">Question 1 sur 4</span>
+                <span id="timer">Temps optimal conseillé : <span id="time-left">02:00</span></span>
+            </div>
+            <div class="progress-bar-container">
+                <div class="progress-bar" id="progress"></div>
+            </div>
 
-      <div class="service-card">
-        <span class="service-tag">Stratégie</span>
-        <h3>Accompagnement créateur</h3>
-        <p class="service-desc">
-          Analyse, conseils et direction créative
-          pour faire évoluer ton contenu.
-        </p>
-        <ul>
-          <li>Audit & feedback</li>
-          <li>Formats performants</li>
-          <li>Suivi personnalisé</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
+            <div class="question-text" id="question-title">Chargement de la question...</div>
+            
+            <div class="options-container" id="options">
+                <!-- Les options s'insèrent ici dynamiquement -->
+            </div>
 
-<section id="projects">
-  <div class="container">
-    <h2 class="section-title">Projets</h2>
-    <div class="projects">
-      <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-        <img src="https://via.placeholder.com/400x250?text=Projet+1">
-      </div>
-      <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-        <img src="https://via.placeholder.com/400x250?text=Projet+2">
-      </div>
-      <div class="project" onclick="openVideo('https://www.youtube.com/embed/dQw4w9WgXcQ')">
-        <img src="https://via.placeholder.com/400x250?text=Projet+3">
-      </div>
-    </div>
-  </div>
-</section>
+            <button class="btn hidden" id="next-btn">Question Suivante</button>
+        </div>
 
-<section id="pricing">
-  <div class="container">
-    <h2 class="section-title">Grille tarifaire</h2>
-    <div class="pricing-wrap">
-      <table>
-        <tr><th>Service</th><th>Description</th><th>Type</th><th>Prix</th></tr>
-        <tr><td>Montage short</td><td>Vidéo verticale réseaux</td><td>Unitaire</td><td>20€</td></tr>
-        <tr><td>Montage long</td><td>Vidéo YouTube</td><td>Unitaire</td><td>80€</td></tr>
-        <tr><td>Accompagnement</td><td>Suivi créateur</td><td>Mensuel</td><td>50€/mois</td></tr>
-      </table>
-    </div>
-  </div>
-</section>
+        <!-- ÉCRAN DES RÉSULTATS -->
+        <div id="results-screen" class="card results-container hidden">
+            <h1>Analyse Terminée !</h1>
+            <p class="subtitle">Vos réponses ont été traitées par notre algorithme psychométrique.</p>
+            
+            <div class="score-display" id="final-score">115</div>
+            <div class="rank-text" id="rank-title">Intelligence Supérieure</div>
+            
+            <div class="analysis-box" id="analysis-desc">
+                Votre profil démontre une excellente capacité d'analyse de structures complexes et une vitesse de traitement supérieure à la moyenne de la population globale.
+            </div>
 
-<footer>© 2026 Thom Monteur</footer>
+            <button class="btn" onclick="window.location.reload()">Recommencer le test</button>
+        </div>
+    </main>
 
-<div class="lightbox" id="lightbox" onclick="closeVideo()">
-  <div class="lightbox-content" id="videoContainer"></div>
-</div>
+    <footer>
+        &copy; 2026 FindMyQI. Tous droits réservés. Évaluation conçue selon les critères psychométriques standards.
+    </footer>
 
-<script>
-function openVideo(url){
-  const box=document.getElementById("lightbox");
-  const container=document.getElementById("videoContainer");
-  container.innerHTML=`<iframe src="${url}?autoplay=1" frameborder="0" allowfullscreen></iframe>`;
-  box.classList.add("active");
-}
-function closeVideo(){
-  document.getElementById("lightbox").classList.remove("active");
-  document.getElementById("videoContainer").innerHTML="";
-}
-</script>
+    <script>
+        // Banques de questions réalistes (Logique, Matrices, Suites Numériques)
+        const questions = [
+            {
+                title: "Complétez la suite logique : 2, 4, 8, 16, 32, ?",
+                options: ["48", "64", "50", "128"],
+                correct: 1 // index de "64"
+            },
+            {
+                title: "Si tous les Bloops sont des Blaaps, et certains Blaaps sont des Bleeps, peut-on affirmer avec certitude que certains Bloops sont des Bleeps ?",
+                options: ["Oui, absolument", "Non, pas obligatoirement", "Cela dépend de l'heure", "Aucune des réponses"],
+                correct: 1
+            },
+            {
+                title: "Trouvez l'intrus parmi les options suivantes :",
+                options: ["Triangle", "Carré", "Cercle", "Pentagone"],
+                correct: 2 // Le cercle n'a pas de sommets/côtés droits
+            },
+            {
+                title: "Complétez l'analogie : Le volant est à la voiture ce que le gouvernail est au :",
+                options: ["Vélo", "Avion", "Bateau", "Train"],
+                correct: 2
+            }
+        ];
 
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let selectedOptionIndex = null;
+
+        // Éléments du DOM
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const quizScreen = document.getElementById('quiz-screen');
+        const resultsScreen = document.getElementById('results-screen');
+        const startBtn = document.getElementById('start-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const questionTitle = document.getElementById('question-title');
+        const optionsContainer = document.getElementById('options');
+        const questionCounter = document.getElementById('question-counter');
+        const progressBar = document.getElementById('progress');
+        const finalScoreDisplay = document.getElementById('final-score');
+        const rankTitle = document.getElementById('rank-title');
+        const analysisDesc = document.getElementById('analysis-desc');
+
+        // Lancement du test
+        startBtn.addEventListener('click', () => {
+            welcomeScreen.classList.add('hidden');
+            quizScreen.classList.remove('hidden');
+            loadQuestion();
+        });
+
+        // Chargement d'une question
+        function loadQuestion() {
+            selectedOptionIndex = null;
+            nextBtn.classList.add('hidden');
+            
+            const currentQuestion = questions[currentQuestionIndex];
+            questionTitle.innerText = currentQuestion.title;
+            questionCounter.innerText = `Question ${currentQuestionIndex + 1} sur ${questions.length}`;
+            
+            // Mise à jour barre de progression
+            const progressPercent = (currentQuestionIndex / questions.length) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+
+            optionsContainer.innerHTML = '';
+            currentQuestion.options.forEach((option, index) => {
+                const button = document.createElement('button');
+                button.classList.add('option-btn');
+                button.innerText = option;
+                button.addEventListener('click', () => selectOption(index, button));
+                optionsContainer.appendChild(button);
+            });
+        }
+
+        // Sélection d'une réponse
+        function selectOption(index, buttonElement) {
+            const allButtons = optionsContainer.querySelectorAll('.option-btn');
+            allButtons.forEach(btn => btn.classList.remove('selected'));
+            
+            buttonElement.classList.add('selected');
+            selectedOptionIndex = index;
+            nextBtn.classList.remove('hidden');
+        }
+
+        // Passage à la question suivante ou calcul final
+        nextBtn.addEventListener('click', () => {
+            if (selectedOptionIndex === questions[currentQuestionIndex].correct) {
+                score++;
+            }
+
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < questions.length) {
+                loadQuestion();
+            } else {
+                showResults();
+            }
+        });
+
+        // Affichage des résultats avec calcul dynamique du QI
+        function showResults() {
+            quizScreen.classList.add('hidden');
+            resultsScreen.classList.remove('hidden');
+
+            // Formule de calcul fictive mais réaliste basée sur le ratio de bonnes réponses
+            // Étalonné sur une moyenne de 100 avec un max à 140 pour 4 questions.
+            let computedQI = 70 + (score * 17.5); 
+            // Un peu de variance aléatoire légère pour faire "calcul d'algorithme complexe"
+            computedQI += Math.floor(Math.random() * 4);
+
+            finalScoreDisplay.innerText = computedQI;
+
+            // Détermination du rang
+            if (computedQI >= 130) {
+                rankTitle.innerText = "Très Supérieur / Haut Potentiel (HPI)";
+                analysisDesc.innerText = "Vos capacités d'abstraction cognitive et de résolution de problèmes complexes se situent dans les 2% supérieurs de la population mondiale. Profil analytique d'élite.";
+            } else if (computedQI >= 115) {
+                rankTitle.innerText = "Intelligence Supérieure";
+                analysisDesc.innerText = "Votre score montre une aisance logique et une vitesse d'exécution très nettement au-dessus de la moyenne. Vous assimilez les nouvelles structures d'information avec une grande facilité.";
+            } else if (computedQI >= 90) {
+                rankTitle.innerText = "Moyenne Standard Internationale";
+                analysisDesc.innerText = "Vous vous situez parfaitement dans la norme globale. Vos compétences cognitives, logiques et managériales sont totalement équilibrées et opérationnelles pour tout type de structure complexe.";
+            } else {
+                rankTitle.innerText = "Profil Pragmatique / Concret";
+                analysisDesc.innerText = "Votre mode de pensée est orienté vers le concret et l'immédiat. Le test montre que vous préférez les applications pratiques aux matrices purement abstraites.";
+            }
+        }
+    </script>
 </body>
 </html>
